@@ -1,0 +1,34 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="home-section fullwidth-slider bg-dark" id="home">
+
+    {% for slide in self %}
+    {% image slide.image width-1920 as background %}
+    <section class="home-section bg-scroll bg-dark-alfa-30" data-background="{{ background.url }}">
+        <div class="js-height-full container">
+
+            <!-- Hero Content -->
+            <div class="home-content">
+                <div class="home-text">
+
+                    <h1 class="hs-line-8 no-transp font-alt mb-50 mb-xs-30">
+                        Creative design studio
+                    </h1>
+
+                    <h2 class="hs-line-14 font-alt mb-50 mb-xs-30">
+                        Update Architects
+                    </h2>
+
+                    <div class="local-scroll">
+                        <a href="#about" class="btn btn-mod btn-border-w btn-medium btn-round hidden-xs">See More</a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Hero Content -->
+
+        </div>
+    </section>
+    {% endfor %}
+
+</div>

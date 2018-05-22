@@ -14,20 +14,23 @@ class HomePage(Page):
            blocks.StructBlock([
                ('image', ImageChooserBlock()),
                ('title', blocks.CharBlock(required=False)),
-           ], icon='image'),
-        )),
+           ], icon='image',
+        ), template='home/blocks/main_slider.html')),
         ('about_block', blocks.StructBlock([
             ('header_text', blocks.CharBlock()),
             ('left_column', blocks.RichTextBlock()),
             ('right_column', blocks.RichTextBlock()),
-        ])),
+        ], template='home/blocks/about_block.html')),
         ('customers', blocks.ListBlock(
             blocks.StructBlock([
                 ('name', blocks.CharBlock()),
                 ('logo', ImageChooserBlock()),
-            ])
+            ]),
+            template='home/blocks/customers.html'
         )),
-        ('blog_posts', blocks.StaticBlock()),
+        ('blog_posts', blocks.StaticBlock(
+            template='home/blocks/blog_posts.html'
+        )),
     ])
 
     content_panels = Page.content_panels + [
