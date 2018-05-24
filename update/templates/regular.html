@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+{% image page.header_image fill-1920x1080 as cover %}
+<section {% if page.header_image %}class="page-section bg-dark-alfa-50 parallax-3" data-background="{{ cover.url }}"{% else %}class="small-section bg-gray-lighter"{% endif %}>
+    <div class="relative container align-left">
+
+        <div class="row">
+
+            <div class="col-md-8">
+                <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">{{ page.title }}</h1>
+                {% if page.subtitle %}
+                <div class="hs-line-4 font-alt {% if not page.header_image %}black{% endif %}">
+                    {{ page.subtitle }}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-4 mt-30">
+                <div class="mod-breadcrumbs font-alt align-right">
+                    {% for parent in self.get_ancestors %}
+                      {% if not parent.is_root %}
+                        <a href={% pageurl parent %}>{{ parent.title }}</a>&nbsp;/&nbsp;
+                      {% endif %}
+                    {% endfor %}
+                    <span>{{ page.title }}</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="page-section">
+    <div class="container relative">
+
+        <div class="row">
+          {% block body %}
+          {% endblock %}
+        </div>
+
+      </div>
+</section>
+{% endblock %}

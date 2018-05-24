@@ -50,11 +50,6 @@ class HomePage(Page):
         return context
 
 
-class AboutPage(Page):
-    parent_page_types = ['home.HomePage']
-    subpage_types = []
-
-
 class ServicesPage(Page):
     parent_page_types = ['home.HomePage']
     subpage_types = ['home.ServicePage']
@@ -81,11 +76,17 @@ class ServicePage(Page):
     subpage_types = []
 
 
-class JobPostings(Page):
+class AboutPage(Page):
+    body = RichTextField()
     parent_page_types = ['home.HomePage']
+    subpage_types = ['home.JobPostings', 'home.Contacts']
+
+
+class JobPostings(Page):
+    parent_page_types = ['home.AboutPage']
     subpage_types = []
 
 
 class Contacts(Page):
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['home.AboutPage']
     subpage_types = []

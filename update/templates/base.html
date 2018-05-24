@@ -41,7 +41,7 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}appear-animate{% endblock %}">
         {% wagtailuserbar %}
 
         <div class="page-loader">
@@ -49,13 +49,15 @@
         </div>
 
         <div class="page" id="top">
+
+          {% block nav %}
           <!-- Navigation panel -->
-          <nav class="main-nav dark transparent stick-fixed">
+          <nav class="main-nav js-stick">
               <div class="full-wrapper relative clearfix">
                   <!-- Logo ( * your text or image into link tag *) -->
                   <div class="nav-logo-wrap local-scroll">
-                      <a href="#top" class="logo">
-                          <img src="{% static 'images/logo-white.png' %}" alt="" />
+                      <a href="/" class="logo">
+                          <img src="{% static 'images/logo-black.png' %}" alt="" />
                       </a>
                   </div>
                   <div class="mobile-nav">
@@ -63,13 +65,59 @@
                   </div>
                   <!-- Main Menu -->
                   <div class="inner-nav desktop-nav">
-                      {% main_menu max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/main_menu.html" %}
+                      {% main_menu max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/main_menu.html" sub_menu_template="menus/sub_menu.html" %}
                   </div>
               </div>
           </nav>
           <!-- End Navigation panel -->
+          {% endblock %}
 
           {% block content %}{% endblock %}
+
+          <!-- Foter -->
+          <footer class="page-section bg-gray-lighter footer pb-60">
+              <div class="container">
+
+                  <!-- Footer Logo -->
+
+                  <!-- End Footer Logo -->
+
+                  <!-- Social Links -->
+                  <div class="footer-social-links mb-110 mb-xs-60">
+                      <a href="#" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a>
+                      <a href="#" title="Youtube" target="_blank"><i class="fa fa-youtube"></i></a>
+                      <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                  </div>
+                  <!-- End Social Links -->
+
+                  <!-- Footer Text -->
+                  <div class="footer-text">
+
+                      <!-- Copyright -->
+                      <div class="footer-copy font-alt">
+                          <a href="" target="_blank">&copy; Update Architects 2018</a>.
+                      </div>
+                      <!-- End Copyright -->
+
+                      <div class="footer-made">
+                          Made with love for great people.
+                      </div>
+
+                  </div>
+                  <!-- End Footer Text -->
+
+               </div>
+
+
+               <!-- Top Link -->
+               <div class="local-scroll">
+                   <a href="#top" class="link-to-top"><i class="fa fa-caret-up"></i></a>
+               </div>
+               <!-- End Top Link -->
+
+          </footer>
+          <!-- End Foter -->
+
 
         </div>
 
