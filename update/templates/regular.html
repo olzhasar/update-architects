@@ -3,8 +3,8 @@
 
 {% block content %}
 
-{% image page.header_image fill-1920x1080 as cover %}
-<section {% if page.header_image %}class="page-section bg-dark-alfa-50 parallax-3" data-background="{{ cover.url }}"{% else %}class="small-section bg-gray-lighter"{% endif %}>
+{% image page.cover_image fill-1920x1080 as cover %}
+<section {% if page.cover_image %}class="page-section bg-dark-alfa-50 parallax-3" data-background="{{ cover.url }}"{% else %}class="small-section bg-gray-lighter"{% endif %}>
     <div class="relative container align-left">
 
         <div class="row">
@@ -34,14 +34,16 @@
     </div>
 </section>
 
+{% block body %}
 <section class="page-section">
     <div class="container relative">
 
         <div class="row">
-          {% block body %}
-          {% endblock %}
+          {{ page.body|richtext }}
         </div>
 
       </div>
 </section>
+{% endblock %}
+
 {% endblock %}

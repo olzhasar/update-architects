@@ -1,9 +1,12 @@
 from django.db import models
 
-from wagtail.core.models import Page
+from modelcluster.fields import ParentalKey
+
+from wagtail.core.models import Page, Orderable
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField, RichTextField
-from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
+from wagtail.admin.edit_handlers import (StreamFieldPanel, FieldPanel,
+                                         MultiFieldPanel, InlinePanel)
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -50,43 +53,107 @@ class HomePage(Page):
         return context
 
 
-class ServicesPage(Page):
-    parent_page_types = ['home.HomePage']
-    subpage_types = ['home.ServicePage']
+class RegularPage(Page):
+    is_abstract = True
 
+    subtitle = models.CharField(max_length=255, blank=True, null=True)
+    body = RichTextField(null=True, blank=True)
 
-class ServicePage(Page):
-    icon_name = models.CharField(max_length=100)
-    header_image = models.ForeignKey(
+    cover_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    body = RichTextField()
 
     content_panels = Page.content_panels + [
-        FieldPanel('icon_name'),
-        ImageChooserPanel('header_image'),
+        FieldPanel('subtitle'),
         FieldPanel('body', classname="full"),
+    ]
+
+    promote_panels = Page.promote_panels + [
+        ImageChooserPanel('cover_image'),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class ServicesPage(RegularPage):
+    parent_page_types = ['home.HomePage']
+    subpage_types = ['home.ServicePage']
+
+    def get_context(self, request):
+        context = super().get_context(request)
+
+        context['services'] = ServicePage.objects.live()
+        return context
+
+
+class ServicePage(RegularPage):
+    short_description = models.TextField(blank=True, null=True)
+    icon_name = models.CharField(max_length=100)
+
+    promote_panels = RegularPage.promote_panels + [
+        FieldPanel('icon_name'),
+        FieldPanel('short_description'),
     ]
 
     parent_page_types = ['home.ServicesPage']
     subpage_types = []
 
 
-class AboutPage(Page):
-    body = RichTextField()
+class AboutPage(RegularPage):
     parent_page_types = ['home.HomePage']
     subpage_types = ['home.JobPostings', 'home.Contacts']
 
 
-class JobPostings(Page):
+class JobPostings(RegularPage):
+    content_panels = RegularPage.content_panels + [
+        InlinePanel('postings', label='Job postings')
+    ]
     parent_page_types = ['home.AboutPage']
     subpage_types = []
 
 
-class Contacts(Page):
+class JobPosting(Orderable):
+    page = ParentalKey(JobPostings, on_delete=models.CASCADE,
+                       related_name='postings')
+    job_title = models.CharField(max_length=255)
+    description = RichTextField()
+
+    panels = [
+        FieldPanel('job_title'),
+        FieldPanel('description', classname="full")
+    ]
+
+
+class Contacts(RegularPage):
+    phone_number = models.CharField(max_length=100, blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
+
+    content_panels = RegularPage.content_panels + [
+        MultiFieldPanel(
+            [
+                FieldPanel('phone_number'),
+                FieldPanel('address'),
+                FieldPanel('email'),
+            ],
+            heading='Contact Information'
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel('latitude'),
+                FieldPanel('longitude'),
+            ],
+            heading='Google Maps location'
+        )
+    ]
+
     parent_page_types = ['home.AboutPage']
     subpage_types = []

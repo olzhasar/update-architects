@@ -1,8 +1,40 @@
 {% extends 'regular.html' %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body %}
 
-{{ page.body|richtext }}
+<section class="page-section">
+    <div class="container relative">
+
+      <div class="row">
+        {{ page.body|richtext }}
+      </div>
+      
+       <div class="row multi-columns-row">
+
+            {% for service in services %}
+            <!-- Post Item -->
+            <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.1s" data-wow-duration="2s">
+
+                <div class="post-prev-img">
+                    <a href={% pageurl service %}>{% image service.cover_image fill-370x200 %}</a>
+                </div>
+
+                <div class="post-prev-title font-alt">
+                    <a href={% pageurl service %}>{{ service.title }}</a>
+                </div>
+
+                <div class="post-prev-text">
+                    {{ service.short_description }}
+                </div>
+
+            </div>
+            <!-- End Post Item -->
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
 
 {% endblock %}

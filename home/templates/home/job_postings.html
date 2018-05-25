@@ -1,0 +1,35 @@
+{% extends 'regular.html' %}
+{% load wagtailcore_tags %}
+
+{% block body %}
+
+<section class="page-section">
+    <div class="container relative">
+
+        <div class="row section-text">
+            <div class="col-md-8 col-md-offset-2">
+
+                <!-- Accordion -->
+                {{ page.body|richtext }}
+
+                <dl class="accordion">
+
+                    {% for posting in page.postings.all %}
+                    <dt>
+                        <a href="">{{ posting.job_title }}</a>
+                    </dt>
+                    <dd>
+                        {{ posting.description|richtext }}
+                    </dd>
+                    {% endfor %}
+
+                </dl>
+                <!-- End Accordion -->
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
