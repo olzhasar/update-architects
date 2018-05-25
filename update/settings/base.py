@@ -25,13 +25,14 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     'home',
-    'blog',
     'portfolio',
     'search',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.contrib.modeladmin',
+    'wagtail.contrib.sitemaps',
+    'wagtail.contrib.routable_page',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -46,6 +47,9 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+
+    'puput',
+    'django_social_share',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -158,6 +162,8 @@ MEDIA_URL = '/media/'
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "update"
+
+PUPUT_AS_PLUGIN = True
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
