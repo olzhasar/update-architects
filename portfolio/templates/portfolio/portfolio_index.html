@@ -1,0 +1,40 @@
+{% extends 'regular.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body %}
+
+<section class="page-section">
+    <div class="container relative">
+
+        <!-- Works Filter -->
+        <div class="works-filter font-alt align-center">
+            <a href="#" class="filter active" data-filter="*">Все проекты</a>
+            {% for category in page.categories.all %}
+            <a href="#{{ category.code }}" class="filter" data-filter=".{{ category.code }}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+        <!-- End Works Filter -->
+
+        <!-- Works Grid -->
+        <ul class="works-grid work-grid-3 clearfix font-alt hover-white hide-titles" id="work-grid">
+
+            {% for project in projects %}
+            <li class="work-item mix {% for category in project.categories.all %}{{ category.code }} {% endfor %}">
+                <a href={% pageurl project %}>
+                    <div class="work-img">
+                        {% image project.images.first.image fill-650x418 %}
+                    </div>
+                    <div class="work-intro">
+                        <h3 class="work-title">{{ project.title }}</h3>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+
+        </ul>
+        <!-- End Works Grid -->
+
+    </div>
+</section>
+
+{% endblock %}

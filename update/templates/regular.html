@@ -9,7 +9,7 @@
 
         <div class="row">
 
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">{{ page.title }}</h1>
                 {% if page.subtitle %}
                 <div class="hs-line-4 font-alt {% if not page.header_image %}black{% endif %}">
@@ -18,7 +18,7 @@
                 {% endif %}
             </div>
 
-            <div class="col-md-4 mt-30">
+            <div class="col-md-5 mt-30">
                 <div class="mod-breadcrumbs font-alt align-right">
                     {% for parent in self.get_ancestors %}
                       {% if not parent.is_root %}
