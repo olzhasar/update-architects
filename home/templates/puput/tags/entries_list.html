@@ -1,0 +1,14 @@
+{% load i18n wagtailimages_tags puput_tags %}
+
+<ul class="clearlist widget-posts">
+    {% for entry in entries %}
+    <li class="clearfix">
+        <div class="widget-posts-descr">
+            <a href="{% entry_url entry blog_page %}" title="">{{ entry.title }}</a>
+            Опубликовано {{ entry.date|date:"SHORT_DATE_FORMAT" }}
+        </div>
+    </li>
+    {% empty %}
+        Публикаций пока нет
+    {% endfor %}
+</ul>

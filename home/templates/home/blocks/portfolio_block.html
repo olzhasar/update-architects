@@ -1,0 +1,63 @@
+{% load wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags puput_tags %}
+
+<!-- Portfolio Section -->
+<section class="page-section pb-0" id="portfolio">
+    <div class="relative">
+
+        <h2 class="section-title font-alt mb-70 mb-sm-40">
+            {{ self.title }}
+        </h2>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+
+                    <div class="section-text align-center mb-70 mb-xs-40">
+                        {{ self.subtitle }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Works Grid -->
+        <ul class="works-grid work-grid-3 work-grid-gut clearfix font-alt hover-white hide-titles" id="work-grid">
+
+            {% for project in self.projects %}
+            <!-- Work Item (External Page) -->
+            <li class="work-item">
+                <a href="{% pageurl project %}" class="work-ext-link">
+                    {% image project.images.first.image fill-650x418 as project_image %}
+                    <div class="work-img">
+                        <img class="work-img" src="{{ project_image.url }}" alt="{{ project_image.alt }}" />
+                    </div>
+                    <div class="work-intro">
+                        <h3 class="work-title">{{ project.title }}</h3>
+                    </div>
+                </a>
+            </li>
+            <!-- End Work Item -->
+            {% endfor %}
+
+        </ul>
+        <!-- End Works Grid -->
+
+    </div>
+</section>
+<!-- End Portfolio Section -->
+
+
+<!-- Call Action Section -->
+<section class="small-section bg-dark">
+    <div class="container relative">
+
+        <div class="align-center">
+            <h3 class="banner-heading font-alt">Хотите увидеть больше работ?</h3>
+            <div class="local-scroll">
+                <a href="{% slugurl 'portfolio' %}" class="btn btn-mod btn-w btn-medium btn-round">Перейти в портфолио</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End Call Action Section -->

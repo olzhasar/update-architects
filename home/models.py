@@ -10,6 +10,8 @@ from wagtail.admin.edit_handlers import (StreamFieldPanel, FieldPanel,
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
 
+from puput.models import BlogPage, EntryPage
+
 
 class HomePage(Page):
 
@@ -24,12 +26,22 @@ class HomePage(Page):
            ], icon='image'),
            template='home/blocks/main_slider.html'
         )),
+
         ('about_block', blocks.StructBlock([
             ('title', blocks.CharBlock()),
             ('header_text', blocks.CharBlock()),
             ('left_column', blocks.RichTextBlock()),
             ('right_column', blocks.RichTextBlock()),
         ], template='home/blocks/about_block.html')),
+
+        ('portfolio_block', blocks.StructBlock([
+            ('title', blocks.CharBlock()),
+            ('subtitle', blocks.CharBlock()),
+            ('projects', blocks.ListBlock(
+                blocks.PageChooserBlock(target_model='portfolio.project')
+            )),
+        ], template='home/blocks/portfolio_block.html')),
+
         ('customers', blocks.ListBlock(
             blocks.StructBlock([
                 ('name', blocks.CharBlock()),
@@ -37,6 +49,7 @@ class HomePage(Page):
             ], icon='group'),
             template='home/blocks/customers.html'
         )),
+
         ('blog_posts', blocks.StaticBlock(
             template='home/blocks/blog_posts.html'
         )),
@@ -50,6 +63,7 @@ class HomePage(Page):
         context = super().get_context(request)
 
         context['services'] = ServicePage.objects.live()
+        context['entries'] = EntryPage.objects.live().order_by('-date')[:3]
         return context
 
 

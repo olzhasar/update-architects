@@ -1,0 +1,9 @@
+{% load i18n wagtailroutablepage_tags %}
+
+<div class="tags">
+    {% for tag in tags %}
+        <a href="{% routablepageurl blog_page "entries_by_tag" tag.slug %}">{{ tag }}</a>
+    {% empty %}
+        'Тэгов пока нет'
+    {% endfor %}
+</div>

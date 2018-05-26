@@ -18,7 +18,7 @@
                 {% endwith %}
             {% endblock %}
         </title>
-        <meta name="description" content="" />
+        <meta name="description" content="{% block meta_description %}{{ self.search_description }}{% endblock %}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <!-- Favicons -->

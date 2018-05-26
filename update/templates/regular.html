@@ -10,9 +10,9 @@
         <div class="row">
 
             <div class="col-md-7">
-                <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">{{ page.title }}</h1>
+                <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">{% block breadcrumb_title %}{{ page.title }}{% endblock %}</h1>
                 {% if page.subtitle %}
-                <div class="hs-line-4 font-alt {% if not page.header_image %}black{% endif %}">
+                <div class="hs-line-4 font-alt {% if not page.cover_image %}black{% endif %}">
                     {{ page.subtitle }}
                 </div>
                 {% endif %}

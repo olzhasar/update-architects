@@ -1,0 +1,31 @@
+{% extends "puput/base.html" %}
+{% load i18n wagtailcore_tags wagtailimages_tags puput_tags social_share %}
+
+{% block breadcrumb_title %}{{ self.get_parent.title }}{% endblock %}
+
+{% block blog_content %}
+
+    <div class="blog-item mb-80 mb-xs-40">
+
+      <!-- Text -->
+      <div class="blog-item-body">
+
+        <h1 class="mt-0 font-alt">{{ self.title }}</h1>
+
+        <!-- Media Gallery -->
+        {% image self.header_image fill-1140x642 as header_image %}
+        <!-- Image -->
+        <div class="blog-media mt-40 mb-40 mb-xs-30">
+            <img alt="{{ self.header_image.title }}" src="{{ header_image.url }}">
+        </div>
+
+        {{ self.body|richtext}}
+
+      </div>
+      <!-- End Text -->
+      <div class="clearfix mt-40">
+        <a href="{% pageurl blog_page %}" class="blog-item-more left"><i class="fa fa-angle-left"></i>&nbsp;Назад</a>
+      </div>
+
+    </div>
+{% endblock blog_content %}
