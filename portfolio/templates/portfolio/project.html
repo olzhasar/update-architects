@@ -2,19 +2,25 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body %}
-<div class="home-section fullwidth-slider bg-dark">
-
-    {% for slide in page.images.all %}
-    {% image slide.image fill-1920x1080 as image %}
-    <section class="home-section bg-scroll fixed-height-medium" data-background="{{ image.url }}">
-        <div class="js-height-parent container"></div>
-    </section>
-    {% endfor %}
-
-</div>
 
 <section class="page-section">
     <div class="container relative">
+
+        <div class="row multi-columns-row alt-features-grid mb-80 mb-xs-40">
+
+          <div class="work-full-media mb-80 mb-xs-40">
+
+              <ul class="clearlist work-full-slider owl-carousel">
+                {% for slide in page.images.all %}
+                  <li>
+                    {% image slide.image fill-1140x642 %}
+                  </li>
+                {% endfor %}
+              </ul>
+
+          </div>
+
+        </div>
 
         <div class="section-text mb-60 mb-sm-40">
             <div class="row">
@@ -23,20 +29,38 @@
 
                     <!-- Project Detail -->
                     <div class="work-detail">
-                        <h5 class="font-alt mt-0 mb-20">Project Details</h5>
+                        <h5 class="font-alt mt-0 mb-20">Детали проекта</h5>
                         <div class="work-full-detail">
+                          {% if self.year %}
                             <p>
-                                <strong>Client:</strong>
-                                Envato Users
+                                <strong>Год:</strong>
+                                {{ self.year }}
                             </p>
+                          {% endif %}
+                          {% if self.location %}
                             <p>
-                                <strong>Date:</strong>
-                                1th Februery, 2014
+                                <strong>Расположение:</strong>
+                                {{ self.location }}
                             </p>
+                          {% endif %}
+                          {% if self.area_size %}
                             <p>
-                                <strong>Online:</strong>
-                                <a href="#" target="_blank">www.rhythm.bestlooker.pro</a>
+                                <strong>Общая площадь:</strong>
+                                {{ self.area_size }}
                             </p>
+                          {% endif %}
+                          {% if self.authors %}
+                            <p>
+                                <strong>Автор(ы) проекта:</strong>
+                                {{ self.authors }}
+                            </p>
+                          {% endif %}
+                          {% if self.status %}
+                            <p>
+                                <strong>Статус реализации:</strong>
+                                {{ self.status }}
+                            </p>
+                          {% endif %}
                         </div>
                     </div>
                     <!-- End Project Detail -->
@@ -44,11 +68,11 @@
                 </div>
 
                 <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In maximus ligula semper metus pellentesque mattis. Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur fermentum nibh volutpat, accumsan purus.
+                    {{ self.left_column|richtext }}
                 </div>
 
                 <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                    Etiam sit amet fringilla lacus. Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus. Praesent sed nisi eleifend, fermentum orci amet, iaculis libero. Donec vel ultricies purus. Nam dictum sem, eu aliquam.
+                  {{ self.right_column|richtext }}
                 </div>
 
             </div>

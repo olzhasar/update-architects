@@ -10,7 +10,10 @@ Primary use:    MultiPurpose Template
 
 @import "font-awesome.min.css";
 @import "et-line.css";
-@import url('https://fonts.googleapis.com/css?family=Didact+Gothic|Open+Sans:300,400,700&subset=cyrillic');/*------------------------------------------------------------------
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Scada:400,700&subset=cyrillic');
+
+/*------------------------------------------------------------------
+
 [Table of contents]
 
 1. Common styles
@@ -83,7 +86,7 @@ Primary use:    MultiPurpose Template
 [Typography]
 
 Body:               14px/1.6 "Open Sans", arial, sans-serif;
-Headers:            Didact Gothic, arial, sans-serif;
+Headers:            Scada, arial, sans-serif;
 Serif:              "Times New Roman", Times, serif;
 Section Title:      35px/1.3 "Open Sans", arial, sans-serif;
 Section Heading:    24px/1.3 "Open Sans", arial, sans-serif;
@@ -441,7 +444,7 @@ hr.black{
     letter-spacing: 1px;
 }
 .font-alt{
-    font-family: 'Didact Gothic', sans-serif;
+    font-family: 'Scada', sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.2em;
 }
@@ -1479,7 +1482,7 @@ a.bg-video-button-muted{
 }
 .logo,
 a.logo:hover{
-    font-family: 'Didact Gothic', sans-serif;
+    font-family: 'Scada', sans-serif;
     font-size: 18px;
     font-weight: 400 !important;
     text-transform: uppercase;
@@ -3663,7 +3666,7 @@ a.logo:hover{
     border-bottom: 1px solid rgba(0,0,0, .05);
 }
 .work-full-detail p strong{
-    width: 100px;
+    width: 180px;
     display: inline-block;
 }
 .work-full-action{
