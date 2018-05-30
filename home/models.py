@@ -6,11 +6,13 @@ from wagtail.core.models import Page, Orderable
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField, RichTextField
 from wagtail.admin.edit_handlers import (StreamFieldPanel, FieldPanel,
-                                         MultiFieldPanel, InlinePanel)
+                                         MultiFieldPanel, InlinePanel,
+                                         FieldRowPanel)
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 
-from puput.models import BlogPage, EntryPage
+from puput.models import EntryPage
 
 
 class HomePage(Page):
@@ -143,13 +145,20 @@ class JobPosting(Orderable):
     ]
 
 
-class Contacts(RegularPage):
+class FormField(AbstractFormField):
+    page = ParentalKey('Contacts', on_delete=models.CASCADE,
+                       related_name='form_fields')
+
+
+class Contacts(RegularPage, AbstractEmailForm):
     phone_number = models.CharField(max_length=100, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
 
     latitude = models.FloatField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
+
+    form_success_text = RichTextField(blank=True, null=True)
 
     content_panels = RegularPage.content_panels + [
         MultiFieldPanel(
@@ -166,7 +175,16 @@ class Contacts(RegularPage):
                 FieldPanel('longitude'),
             ],
             heading='Google Maps location'
-        )
+        ),
+        InlinePanel('form_fields', label="Form fields"),
+        FieldPanel('form_success_text'),
+        MultiFieldPanel([
+            FieldRowPanel([
+                FieldPanel('from_address', classname="col6"),
+                FieldPanel('to_address', classname="col6"),
+            ]),
+            FieldPanel('subject'),
+        ], "Email"),
     ]
 
     parent_page_types = ['home.AboutPage']
