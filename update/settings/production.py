@@ -7,6 +7,11 @@ DEBUG = False
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'update-architects.com',
                  '139.162.175.130']
 
+
+STATIC_ROOT = '/var/www/static'
+
+MEDIA_ROOT = '/var/www/media'
+
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
