@@ -1457,11 +1457,18 @@ a.bg-video-button-muted{
     float: left;
     margin-right: 20px;
 }
+
+@media only screen and (max-width: 600px) {
+    .nav-logo-wrap {
+        margin-left: 20px;
+    }
+}
+
 .nav-logo-wrap .logo{
     display: table-cell;
     vertical-align: middle;
     max-width: 118px;
-    height: 55px;
+    height: 75px;
 
     -webkit-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     -moz-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
