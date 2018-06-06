@@ -42,9 +42,7 @@ class ProjectCategory(Orderable):
 
 
 class Project(Page):
-    categories = ParentalManyToManyField(ProjectCategory,
-                                         blank=True, null=True)
-
+    categories = ParentalManyToManyField(ProjectCategory, blank=True)
     year = models.IntegerField(blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
     area_size = models.CharField(max_length=255, blank=True, null=True)

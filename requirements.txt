@@ -2,7 +2,9 @@ beautifulsoup4==4.6.0
 certifi==2018.4.16
 chardet==3.0.4
 Django==2.0.5
+django-appconf==1.0.2
 django-colorful==1.2
+django-compressor==2.2
 django-el-pagination==3.2.4
 django-modelcluster==4.1
 django-social-share==1.1.2
@@ -16,7 +18,9 @@ Pillow==5.1.0
 psycopg2==2.7.4
 puput==1.0.2
 pytz==2018.4
+rcssmin==1.0.6
 requests==2.18.4
+rjsmin==1.0.12
 six==1.11.0
 Unidecode==0.4.21
 urllib3==1.22

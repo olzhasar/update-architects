@@ -106,3 +106,4 @@ venv.bak/
 secret_settings.py
 
 /media/
+/static/
