@@ -1,12 +1,13 @@
 from .base import *
 from .secret_settings import *
 
-
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'update-architects.com',
-                 '139.162.175.130']
-
+ALLOWED_HOSTS = [
+    'localhost', '127.0.0.1',
+    'update-architects.com',
+    'www.update-architects.com'
+]
 
 STATIC_ROOT = '/var/www/static'
 
