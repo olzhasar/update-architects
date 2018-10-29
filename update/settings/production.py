@@ -12,6 +12,11 @@ STATIC_ROOT = '/var/www/static'
 
 MEDIA_ROOT = '/var/www/media'
 
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
+COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSCompressorFilter']
+COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.SlimItFilter']
+
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
