@@ -20,6 +20,8 @@ COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.SlimItFilter']
 
 WAGTAILIMAGES_JPEG_QUALITY = 70
 
+WAGTAIL_ENABLE_UPDATE_CHECK = False
+
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
