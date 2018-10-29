@@ -37,12 +37,12 @@
 {% block body %}
 <section class="page-section">
     <div class="container relative">
-
-        <div class="row">
-          {{ page.body|richtext }}
-        </div>
-
+      <div class="row">
+	<div class="col-md-12">
+         {{ page.body|richtext }}
+	</div>
       </div>
+    </div>
 </section>
 {% endblock %}
 
