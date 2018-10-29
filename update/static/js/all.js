@@ -509,6 +509,8 @@ function initPageSliders(){
         // Fullwidth slider
         $(".fullwidth-slider").owlCarousel({
             slideSpeed: 350,
+            lazyLoad: true,
+            lazyLoadEager: 1,
             singleItem: true,
             autoHeight: true,
             navigation: true,
@@ -518,6 +520,8 @@ function initPageSliders(){
         // Fullwidth slider
         $(".fullwidth-slider-fade").owlCarousel({
             transitionStyle: "fadeUp",
+            lazyLoad: true,
+            lazyLoadEager: 1,
             slideSpeed: 350,
             singleItem: true,
             autoHeight: true,
@@ -528,6 +532,8 @@ function initPageSliders(){
         // Fullwidth gallery
         $(".fullwidth-gallery").owlCarousel({
             transitionStyle: "fade",
+            lazyLoad: true,
+            lazyLoadEager: 1,
             autoPlay: 5000,
             slideSpeed: 700,
             singleItem: true,
@@ -540,6 +546,8 @@ function initPageSliders(){
         $(".item-carousel").owlCarousel({
             autoPlay: 2500,
             //stopOnHover: true,
+            lazyLoad: true,
+            lazyLoadEager: 1,
             items: 3,
             itemsDesktop: [1199, 3],
             itemsTabletSmall: [768, 3],
@@ -551,6 +559,8 @@ function initPageSliders(){
         // Item carousel
         $(".small-item-carousel").owlCarousel({
             autoPlay: 2500,
+            lazyLoad: true,
+            lazyLoadEager: 1,
             stopOnHover: true,
             items: 6,
             itemsDesktop: [1199, 4],
@@ -563,6 +573,8 @@ function initPageSliders(){
         
         // Single carousel
         $(".single-carousel").owlCarousel({
+            lazyLoad: true,
+            lazyLoadEager: 1,
             singleItem: true,
             autoHeight: true,
             navigation: true,
@@ -572,6 +584,8 @@ function initPageSliders(){
         // Content Slider
         $(".content-slider").owlCarousel({
             slideSpeed: 350,
+            lazyLoad: true,
+            lazyLoadEager: 1,
             singleItem: true,
             autoHeight: true,
             navigation: true,
@@ -581,6 +595,8 @@ function initPageSliders(){
         // Photo slider
         $(".photo-slider").owlCarousel({
             slideSpeed: 350,
+            lazyLoad: true,
+            lazyLoadEager: 1,
             items: 4,
             itemsDesktop: [1199, 4],
             itemsTabletSmall: [768, 2],
@@ -593,6 +609,8 @@ function initPageSliders(){
         // Work slider
         $(".work-full-slider").owlCarousel({
             slideSpeed : 350,
+            lazyLoad: true,
+            lazyLoadEager: 1,
             singleItem: true,
             autoHeight: true,
             navigation: true,
@@ -602,6 +620,8 @@ function initPageSliders(){
         // Blog posts carousel
         $(".blog-posts-carousel").owlCarousel({
             autoPlay: 5000,
+            lazyLoad: true,
+            lazyLoadEager: 1,
             stopOnHover: true,
             items: 3,
             itemsDesktop: [1199, 3],
@@ -615,6 +635,8 @@ function initPageSliders(){
         // Blog posts carousel alt
         $(".blog-posts-carousel-alt").owlCarousel({
             autoPlay: 3500,
+            lazyLoad: true,
+            lazyLoadEager: 1,
             stopOnHover: true,
             slideSpeed: 350,
             singleItem: true,
@@ -627,6 +649,8 @@ function initPageSliders(){
         // Image carousel
         $(".image-carousel").owlCarousel({
             autoPlay: 5000,
+            lazyLoad: true,
+            lazyLoadEager: 1,
             stopOnHover: true,
             items: 4,
             itemsDesktop: [1199, 3],
@@ -643,6 +667,8 @@ function initPageSliders(){
   
         $(".fullwidth-slideshow").owlCarousel({
             autoPlay: 5000,
+            lazyLoad: true,
+            lazyLoadEager: 1,
             stopOnHover: true,
             transitionStyle: "fade",
             slideSpeed: 350,
@@ -656,6 +682,8 @@ function initPageSliders(){
         });
         $(".fullwidth-slideshow-pager").owlCarousel({
             autoPlay: 5000,
+            lazyLoad: true,
+            lazyLoadEager: 1,
             stopOnHover: true,
             items: 8,
             itemsDesktop: [1199,8],
