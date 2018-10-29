@@ -4,81 +4,75 @@
 {% block body %}
 
 <section class="page-section">
-    <div class="container relative">
+  <div class="container relative">
 
-        <div class="row multi-columns-row alt-features-grid mb-80 mb-xs-40">
-
-          <div class="work-full-media mb-80 mb-xs-40">
-
-              <ul class="clearlist work-full-slider owl-carousel">
-                {% for slide in page.images.all %}
-                  <li>
-                    {% image slide.image fill-1140x642 %}
-                  </li>
-                {% endfor %}
-              </ul>
-
-          </div>
-
-        </div>
-
-        <div class="section-text mb-60 mb-sm-40">
-            <div class="row">
-
-                <div class="col-md-4 mb-sm-50 mb-xs-30">
-
-                    <!-- Project Detail -->
-                    <div class="work-detail">
-                        <h5 class="font-alt mt-0 mb-20">Детали проекта</h5>
-                        <div class="work-full-detail">
-                          {% if self.year %}
-                            <p>
-                                <strong>Год:</strong>
-                                {{ self.year }}
-                            </p>
-                          {% endif %}
-                          {% if self.location %}
-                            <p>
-                                <strong>Расположение:</strong>
-                                {{ self.location }}
-                            </p>
-                          {% endif %}
-                          {% if self.area_size %}
-                            <p>
-                                <strong>Общая площадь:</strong>
-                                {{ self.area_size }}
-                            </p>
-                          {% endif %}
-                          {% if self.authors %}
-                            <p>
-                                <strong>Автор(ы) проекта:</strong>
-                                {{ self.authors }}
-                            </p>
-                          {% endif %}
-                          {% if self.status %}
-                            <p>
-                                <strong>Статус реализации:</strong>
-                                {{ self.status }}
-                            </p>
-                          {% endif %}
-                        </div>
-                    </div>
-                    <!-- End Project Detail -->
-
-                </div>
-
-                <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                    {{ self.left_column|richtext }}
-                </div>
-
-                <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                  {{ self.right_column|richtext }}
-                </div>
-
-            </div>
-        </div>
-
+    <div class="work-full-media mb-80 mb-xs-40">
+      <ul class="clearlist work-full-slider owl-carousel">
+        {% for slide in page.images.all %}
+        <li>
+          {% image slide.image fill-1140x642 %}
+        </li>
+        {% endfor %}
+      </ul>
     </div>
+
+    <div class="section-text mb-60 mb-sm-40">
+      <div class="row">
+
+        <div class="col-md-4 mb-sm-50 mb-xs-30">
+
+          <!-- Project Detail -->
+          <div class="work-detail">
+            <h5 class="font-alt mt-0 mb-20">Детали проекта</h5>
+            <div class="work-full-detail">
+              {% if self.year %}
+              <p>
+                <strong>Год:</strong>
+                {{ self.year }}
+              </p>
+              {% endif %}
+              {% if self.location %}
+              <p>
+                <strong>Расположение:</strong>
+                {{ self.location }}
+              </p>
+              {% endif %}
+              {% if self.area_size %}
+              <p>
+                <strong>Общая площадь:</strong>
+                {{ self.area_size }}
+              </p>
+              {% endif %}
+              {% if self.authors %}
+              <p>
+                <strong>Автор(ы) проекта:</strong>
+                {{ self.authors }}
+              </p>
+              {% endif %}
+              {% if self.status %}
+              <p>
+                <strong>Статус реализации:</strong>
+                {{ self.status }}
+              </p>
+              {% endif %}
+            </div>
+          </div>
+          <!-- End Project Detail -->
+
+        </div>
+
+        <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
+          {{ self.left_column|richtext }}
+        </div>
+
+        <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
+          {{ self.right_column|richtext }}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </section>
 
 {% endblock %}

@@ -5,7 +5,6 @@
 
 <section class="page-section">
     <div class="container relative">
-
         <!-- Works Filter -->
         <div class="works-filter font-alt align-center">
             <a href="#" class="filter active" data-filter="*">Все проекты</a>
@@ -16,8 +15,7 @@
         <!-- End Works Filter -->
 
         <!-- Works Grid -->
-        <ul class="works-grid work-grid-3 clearfix font-alt hover-white hide-titles" id="work-grid">
-
+        <ul class="works-grid work-grid-3 work-grid-gut clearfix font-alt hover-white hide-titles" id="work-grid">
             {% for project in projects %}
             <li class="work-item mix {% for category in project.categories.all %}{{ category.code }} {% endfor %}">
                 <a href={% pageurl project %}>
@@ -30,7 +28,6 @@
                 </a>
             </li>
             {% endfor %}
-
         </ul>
         <!-- End Works Grid -->
 
