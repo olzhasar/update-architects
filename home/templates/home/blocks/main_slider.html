@@ -3,7 +3,7 @@
 <div class="home-section fullwidth-slider bg-dark" id="home">
 
     {% for slide in self %}
-    {% image slide.image width-1920 as background %}
+    {% image slide.image width-1920 format-jpeg as background %}
     <section class="home-section bg-scroll bg-dark-alfa-30" data-background="{{ background.url }}">
         <div class="js-height-full container">
 

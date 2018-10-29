@@ -10,7 +10,7 @@
       <ul class="clearlist work-full-slider owl-carousel">
         {% for slide in page.images.all %}
         <li>
-          {% image slide.image fill-1140x642 as slide_img %}
+          {% image slide.image fill-1140x642 format-jpeg as slide_img %}
           <img class="lazyOwl" data-src="{{ slide_img.url }}" alt="{{ slide_img.alt }}">
         </li>
         {% endfor %}

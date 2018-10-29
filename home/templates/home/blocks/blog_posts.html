@@ -16,7 +16,7 @@
             <!-- Post Item -->
             <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.1s" data-wow-duration="2s">
 
-                {% image entry.header_image fill-1140x642 as header_image %}
+                {% image entry.header_image fill-1140x642 format-jpeg as header_image %}
 
                 <div class="post-prev-img">
                     <a href="{% pageurl entry %}"><img src="{{ header_image.url }}" alt="{{ entry.header_image.title }}" /></a>

@@ -17,6 +17,8 @@ COMPRESS_OFFLINE = True
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSCompressorFilter']
 COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.SlimItFilter']
 
+WAGTAILIMAGES_JPEG_QUALITY = 70
+
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 

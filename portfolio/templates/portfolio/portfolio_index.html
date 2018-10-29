@@ -20,7 +20,7 @@
             <li class="work-item mix {% for category in project.categories.all %}{{ category.code }} {% endfor %}">
                 <a href={% pageurl project %}>
                     <div class="work-img">
-                        {% image project.images.first.image fill-650x418 %}
+                        {% image project.images.first.image fill-650x418 format-jpeg %}
                     </div>
                     <div class="work-intro">
                         <h3 class="work-title">{{ project.title }}</h3>
