@@ -6,7 +6,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'localhost', '127.0.0.1',
     'update-architects.com',
-    'www.update-architects.com'
+    'www.update-architects.com',
     'up2date.kz',
     'www.up2date.kz',
 ]
