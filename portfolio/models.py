@@ -77,6 +77,10 @@ class Project(Page):
         ),
     ]
 
+    promote_panels = Page.promote_panels + [
+	FieldPanel('order'),
+    ]
+
     parent_page_types = ['portfolio.PortfolioIndex']
     subpage_types = []
 
