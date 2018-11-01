@@ -42,6 +42,7 @@ class HomePage(Page):
             ('projects', blocks.ListBlock(
                 blocks.PageChooserBlock(target_model='portfolio.project')
             )),
+            ('portfolio_link', blocks.URLBlock(required=False)),
         ], template='home/blocks/portfolio_block.html')),
 
         ('customers', blocks.ListBlock(
