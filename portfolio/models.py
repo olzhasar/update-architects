@@ -42,6 +42,7 @@ class ProjectCategory(Orderable):
 
 
 class Project(Page):
+    order = models.SmallIntegerField(default=0)
     categories = ParentalManyToManyField(ProjectCategory, blank=True)
     year = models.IntegerField(blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)

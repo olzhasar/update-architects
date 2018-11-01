@@ -16,7 +16,7 @@
 
         <!-- Works Grid -->
         <ul class="works-grid work-grid-3 work-grid-gut clearfix font-alt hover-white hide-titles" id="work-grid">
-            {% for project in projects %}
+            {% for project in projects.order_by|dictsort:"order" %}
             <li class="work-item mix {% for category in project.categories.all %}{{ category.code }} {% endfor %}">
                 <a href={% pageurl project %}>
                     <div class="work-img">
