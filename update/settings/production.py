@@ -38,6 +38,10 @@ DATABASES = {
     }
 }
 
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 try:
     from .local import *
 except ImportError:
