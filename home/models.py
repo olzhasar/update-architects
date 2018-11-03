@@ -97,7 +97,7 @@ class RegularPage(Page):
         abstract = True
 
 
-class StandardPage(Page):
+class StandardPage(RegularPage):
     pass
 
 
