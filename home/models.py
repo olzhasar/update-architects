@@ -97,6 +97,10 @@ class RegularPage(Page):
         abstract = True
 
 
+class StandardPage(Page):
+    pass
+
+
 class ServicesPage(RegularPage):
     parent_page_types = ['home.HomePage']
     subpage_types = ['home.ServicePage']
@@ -123,7 +127,7 @@ class ServicePage(RegularPage):
 
 class AboutPage(RegularPage):
     parent_page_types = ['home.HomePage']
-    subpage_types = ['home.JobPostings', 'home.Contacts']
+    subpage_types = ['home.JobPostings', 'home.Contacts', 'home.StandardPage']
 
 
 class JobPostings(RegularPage):
