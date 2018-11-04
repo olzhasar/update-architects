@@ -1,5 +1,5 @@
 {% extends 'regular.html' %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body %}
 
@@ -35,8 +35,3 @@
 </section>
 
 {% endblock %}
-
-{% block extra_js %}
-<script type="text/javascript" src="{% static 'js/isotope.pkgd.min.js' %}"></script>
-{% endblock %}
-
