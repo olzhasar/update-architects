@@ -610,7 +610,7 @@ function initPageSliders(){
         $(".work-full-slider").owlCarousel({
             slideSpeed : 350,
             lazyLoad: true,
-            lazyLoadEager: 1,
+            lazyLoadEager: 3,
             singleItem: true,
             autoHeight: true,
             navigation: true,

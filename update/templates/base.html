@@ -49,9 +49,7 @@
     <body class="{% block body_class %}appear-animate{% endblock %}">
         {% wagtailuserbar %}
 
-        <div class="page-loader">
-            <div class="loader">Loading...</div>
-        </div>
+	{% block page_loader %}{% endblock %}
 
         <div class="page" id="top">
 
