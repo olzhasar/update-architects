@@ -5,12 +5,12 @@ from modelcluster.fields import ParentalKey
 from wagtail.core.models import Page, Orderable
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField, RichTextField
-from wagtail.admin.edit_handlers import (StreamFieldPanel, FieldPanel,
-                                         MultiFieldPanel, InlinePanel,
-                                         FieldRowPanel)
+from wagtail.admin.edit_handlers import (
+    StreamFieldPanel, FieldPanel, MultiFieldPanel, InlinePanel, FieldRowPanel)
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.snippets.models import register_snippet
 
 from puput.models import EntryPage
 
@@ -18,44 +18,45 @@ from puput.models import EntryPage
 class HomePage(Page):
 
     body = StreamField([
-        ('main_slider', blocks.ListBlock(
-           blocks.StructBlock([
-               ('image', ImageChooserBlock()),
-               ('title', blocks.CharBlock(required=False)),
-               ('subtitle', blocks.CharBlock(required=False)),
-               ('button_text', blocks.CharBlock(required=False)),
-               ('button_link', blocks.URLBlock(required=False)),
-           ], icon='image'),
-           template='home/blocks/main_slider.html'
-        )),
-
-        ('about_block', blocks.StructBlock([
-            ('title', blocks.CharBlock()),
-            ('header_text', blocks.CharBlock()),
-            ('left_column', blocks.RichTextBlock()),
-            ('right_column', blocks.RichTextBlock()),
-        ], template='home/blocks/about_block.html')),
-
-        ('portfolio_block', blocks.StructBlock([
-            ('title', blocks.CharBlock()),
-            ('subtitle', blocks.CharBlock()),
-            ('projects', blocks.ListBlock(
-                blocks.PageChooserBlock(target_model='portfolio.project')
-            )),
-            ('portfolio_link', blocks.URLBlock(required=False)),
-        ], template='home/blocks/portfolio_block.html')),
-
-        ('customers', blocks.ListBlock(
-            blocks.StructBlock([
-                ('name', blocks.CharBlock()),
-                ('logo', ImageChooserBlock()),
-            ], icon='group'),
-            template='home/blocks/customers.html'
-        )),
-
-        ('blog_posts', blocks.StaticBlock(
-            template='home/blocks/blog_posts.html'
-        )),
+        ('main_slider',
+         blocks.ListBlock(
+             blocks.StructBlock([
+                 ('image', ImageChooserBlock()),
+                 ('title', blocks.CharBlock(required=False)),
+                 ('subtitle', blocks.CharBlock(required=False)),
+                 ('button_text', blocks.CharBlock(required=False)),
+                 ('button_link', blocks.URLBlock(required=False)),
+             ],
+                                icon='image'),
+             template='home/blocks/main_slider.html')),
+        ('about_block',
+         blocks.StructBlock([
+             ('title', blocks.CharBlock()),
+             ('header_text', blocks.CharBlock()),
+             ('left_column', blocks.RichTextBlock()),
+             ('right_column', blocks.RichTextBlock()),
+         ],
+                            template='home/blocks/about_block.html')),
+        ('portfolio_block',
+         blocks.StructBlock([
+             ('title', blocks.CharBlock()),
+             ('subtitle', blocks.CharBlock()),
+             ('projects',
+              blocks.ListBlock(
+                  blocks.PageChooserBlock(target_model='portfolio.project'))),
+             ('portfolio_link', blocks.URLBlock(required=False)),
+         ],
+                            template='home/blocks/portfolio_block.html')),
+        ('customers',
+         blocks.ListBlock(
+             blocks.StructBlock([
+                 ('name', blocks.CharBlock()),
+                 ('logo', ImageChooserBlock()),
+             ],
+                                icon='group'),
+             template='home/blocks/customers.html')),
+        ('blog_posts',
+         blocks.StaticBlock(template='home/blocks/blog_posts.html')),
     ])
 
     content_panels = Page.content_panels + [
@@ -81,8 +82,7 @@ class RegularPage(Page):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
-    )
+        related_name='+')
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -139,8 +139,8 @@ class JobPostings(RegularPage):
 
 
 class JobPosting(Orderable):
-    page = ParentalKey(JobPostings, on_delete=models.CASCADE,
-                       related_name='postings')
+    page = ParentalKey(
+        JobPostings, on_delete=models.CASCADE, related_name='postings')
     job_title = models.CharField(max_length=255)
     description = RichTextField()
 
@@ -151,8 +151,8 @@ class JobPosting(Orderable):
 
 
 class FormField(AbstractFormField):
-    page = ParentalKey('Contacts', on_delete=models.CASCADE,
-                       related_name='form_fields')
+    page = ParentalKey(
+        'Contacts', on_delete=models.CASCADE, related_name='form_fields')
 
 
 class Contacts(RegularPage, AbstractEmailForm):
@@ -166,21 +166,17 @@ class Contacts(RegularPage, AbstractEmailForm):
     form_success_text = RichTextField(blank=True, null=True)
 
     content_panels = RegularPage.content_panels + [
-        MultiFieldPanel(
-            [
-                FieldPanel('phone_number'),
-                FieldPanel('address'),
-                FieldPanel('email'),
-            ],
-            heading='Contact Information'
-        ),
-        MultiFieldPanel(
-            [
-                FieldPanel('latitude'),
-                FieldPanel('longitude'),
-            ],
-            heading='Google Maps location'
-        ),
+        MultiFieldPanel([
+            FieldPanel('phone_number'),
+            FieldPanel('address'),
+            FieldPanel('email'),
+        ],
+                        heading='Contact Information'),
+        MultiFieldPanel([
+            FieldPanel('latitude'),
+            FieldPanel('longitude'),
+        ],
+                        heading='Google Maps location'),
         InlinePanel('form_fields', label="Form fields"),
         FieldPanel('form_success_text'),
         MultiFieldPanel([
@@ -194,3 +190,19 @@ class Contacts(RegularPage, AbstractEmailForm):
 
     parent_page_types = ['home.AboutPage']
     subpage_types = []
+
+
+@register_snippet
+class SocialLink(models.Model):
+    title = models.CharField(max_length=128)
+    icon = models.CharField(max_length=256)
+    url = models.URLField()
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('icon'),
+        FieldPanel('url'),
+    ]
+
+    def __str__(self):
+        return self.name

@@ -1,0 +1,5 @@
+<div class="footer-social-links mb-110 mb-xs-60">
+{% for social_link in social_links %}
+    <a href="{{ social_link.url }}" title="{{ social_link.title }}" target="_blank"><i class="{{ social_link.icon }}"></i></a>
+{% endfor %}
+</div>
