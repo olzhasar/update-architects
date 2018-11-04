@@ -12,7 +12,7 @@
         
         $("body").imagesLoaded(function(){
             $(".page-loader div").fadeOut();
-            $(".page-loader").delay(200).fadeOut("slow");
+            $(".page-loader").delay(50).fadeOut("fast");
         });
         
         
