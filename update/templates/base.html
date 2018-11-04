@@ -81,11 +81,15 @@
                   {% social_links %}
 
                   <div class="footer-text">
+		  {% with self.get_site.site_name as site_name %}
+		      {% if site_name %}
                       <div class="footer-copy font-alt">
-                          <a href="" target="_blank">&copy; Update Architects 2018</a>
+                          <a href="/" target="_blank">&copy; {{ site_name }} 2018</a>
                       </div>
+		      {% endif %}
+		  {% endwith %}
                       <div class="footer-made">
-                          Made with love for great people.
+			  Architecture & interior design studio
                       </div>
                   </div>
 
