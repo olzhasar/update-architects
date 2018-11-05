@@ -18,7 +18,7 @@ COMPRESS_OFFLINE = True
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSCompressorFilter']
 COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.SlimItFilter']
 
-WAGTAILIMAGES_JPEG_QUALITY = 70
+WAGTAILIMAGES_JPEG_QUALITY = 80
 
 WAGTAIL_ENABLE_UPDATE_CHECK = False
 
