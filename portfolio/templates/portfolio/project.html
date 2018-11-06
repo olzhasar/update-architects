@@ -3,19 +3,17 @@
 
 {% block body %}
 
+<div class="home-section fullwidth-slider bg-dark">
+  {% for slide in page.images.all %}
+  {% image slide.image fill-1920x1080 format-jpeg as slide_img %}
+  <section class="home-section bg-scroll fixed-height-medium" data-background="{{ slide_img.url }}">
+    <div class="js-height-parent container"></div>
+  </section>
+  {% endfor %}
+</div>
+
 <section class="page-section">
   <div class="container relative">
-
-    <div class="work-full-media mb-80 mb-xs-40">
-      <ul class="clearlist work-full-slider owl-carousel">
-        {% for slide in page.images.all %}
-        <li>
-          {% image slide.image fill-1140x642 format-jpeg as slide_img %}
-          <img src="{{ slide_img.url }}" alt="{{ slide_img.alt }}">
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
 
     <div class="section-text mb-60 mb-sm-40">
       <div class="row">
