@@ -107,3 +107,6 @@ secret_settings.py
 
 /media/
 /static/
+
+# Redis dump
+*.rdb
