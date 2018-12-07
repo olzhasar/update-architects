@@ -127,13 +127,16 @@ class ServicePage(RegularPage):
 
 class AboutPage(RegularPage):
     parent_page_types = ['home.HomePage']
-    subpage_types = ['home.JobPostings', 'home.Contacts', 'home.StandardPage']
+    subpage_types = ['home.JobPostings', 'home.Contacts', 'home.StandardPage', 'home.TeamPage']
 
 
 class TeamPage(RegularPage):
-    body_title = models.CharField(max_length=256)
-    body_subtitle = models.CharField(max_length=256)
-    content_panels = RegularPage.content_panels + [
+    body_title = models.CharField(max_length=256, null=True, blank=True)
+    body_subtitle = models.CharField(max_length=256, null=True, blank=True)
+    content_panels = Page.content_panels + [
+        FieldPanel('subtitle'),
+	FieldPanel('body_title'),
+	FieldPanel('body_subtitle'),
         InlinePanel('members', label='Team members')
     ]
 
@@ -143,7 +146,8 @@ class TeamMember(Orderable):
         TeamPage, on_delete=models.CASCADE, related_name='members')
     name = models.CharField(max_length=255)
     job_title = models.CharField(max_length=255)
-    hover_content = RichTextField()
+    hover_content = RichTextField(null=True, blank=True)
+    body = None
     avatar = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
