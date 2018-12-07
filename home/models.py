@@ -130,6 +130,35 @@ class AboutPage(RegularPage):
     subpage_types = ['home.JobPostings', 'home.Contacts', 'home.StandardPage']
 
 
+class TeamPage(RegularPage):
+    body_title = models.CharField(max_length=256)
+    body_subtitle = models.CharField(max_length=256)
+    content_panels = RegularPage.content_panels + [
+        InlinePanel('members', label='Team members')
+    ]
+
+
+class TeamMember(Orderable):
+    page = ParentalKey(
+        TeamPage, on_delete=models.CASCADE, related_name='members')
+    name = models.CharField(max_length=255)
+    job_title = models.CharField(max_length=255)
+    hover_content = RichTextField()
+    avatar = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+')
+
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('job_title'),
+        FieldPanel('hover_content', classname='full'),
+        ImageChooserPanel('avatar'),
+    ]
+
+
 class JobPostings(RegularPage):
     content_panels = RegularPage.content_panels + [
         InlinePanel('postings', label='Job postings')
