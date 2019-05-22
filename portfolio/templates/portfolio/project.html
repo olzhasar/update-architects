@@ -3,21 +3,20 @@
 
 {% block body %}
 
-<div class="work-full-media mb-80 mb-xs-40">
-
-    <ul class="clearlist work-full-slider owl-carousel">
-      {% for slide in page.images.all %}
-        <li>
-            {% image slide.image fill-1140x642 %}
-        </li>
-      {% endfor %}
-    </ul>
-
-</div>
-
-
 <section class="page-section">
   <div class="container relative">
+
+    <div class="work-full-media mb-80 mb-xs-40">
+
+        <ul class="clearlist work-full-slider owl-carousel">
+          {% for slide in page.images.all %}
+            <li>
+                {% image slide.image fill-1140x642 %}
+            </li>
+          {% endfor %}
+        </ul>
+
+    </div>
 
     <div class="section-text mb-60 mb-sm-40">
       <div class="row">
