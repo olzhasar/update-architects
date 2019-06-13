@@ -1,0 +1,15 @@
+User-agent: Yandex
+Disallow: /admin
+Disallow: */css
+
+User-agent: Googlebot
+Disallow: /admin
+Allow: *.css
+Allow: *.js
+
+User-agent: *
+Disallow: /admin
+Allow: *.css
+Allow: *.js
+
+Sitemap: https://up2date.kz/sitemap.xml
