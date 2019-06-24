@@ -84,6 +84,16 @@ class Project(Page):
     parent_page_types = ['portfolio.PortfolioIndex']
     subpage_types = []
 
+    def get_sitemap_urls(self):
+        return [
+            {
+                'location': self.full_url,
+                'lastmod': self.latest_revision_created_at,
+                'changefreq': 'weekly',
+                'priority': 0.64
+            }
+        ]
+
 
 class ProjectImage(Orderable):
     page = ParentalKey(Project, on_delete=models.CASCADE,

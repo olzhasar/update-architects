@@ -70,6 +70,15 @@ class HomePage(Page):
         context['entries'] = EntryPage.objects.live().order_by('-date')[:3]
         return context
 
+    def get_sitemap_urls(self):
+        return [
+            {
+                'location': self.full_url,
+                'lastmod': self.latest_revision_created_at,
+                'changefreq': 'weekly',
+                'priority': 1.0
+            }
+        ]
 
 class RegularPage(Page):
     is_abstract = True
@@ -95,6 +104,16 @@ class RegularPage(Page):
 
     class Meta:
         abstract = True
+
+    def get_sitemap_urls(self):
+        return [
+            {
+                'location': self.full_url,
+                'lastmod': self.latest_revision_created_at,
+                'changefreq': 'weekly',
+                'priority': 0.8
+            }
+        ]
 
 
 class StandardPage(RegularPage):
