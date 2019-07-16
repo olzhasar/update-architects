@@ -19,6 +19,16 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'update',
+        'USER': 'update',
+        'PASSWORD': 'update',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 
 try:
