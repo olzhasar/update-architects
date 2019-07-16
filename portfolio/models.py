@@ -105,7 +105,14 @@ class ProjectImage(Orderable):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    SIZES = (
+        (12, 'Full width'),
+        (6, 'Half'),
+        (4, 'One-third'),
+    )
+    size = models.PositiveSmallIntegerField(choices=SIZES, default=12)
 
     panels = [
-        ImageChooserPanel('image')
+        ImageChooserPanel('image'),
+        FieldPanel('size')
     ]
