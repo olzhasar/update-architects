@@ -7031,7 +7031,7 @@ footer .columns:not(:last-child) {
   padding: 3rem 1rem; }
 
 #home-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../static/img/banner.jpg");
+  background: #333;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; }
@@ -7095,6 +7095,9 @@ footer .columns:not(:last-child) {
   @media screen and (max-width: 1023px) {
     .navbar-item {
       padding: .75rem 1.5rem; } }
+
+.navbar-link {
+  color: white; }
 
 .navbar-burger {
   height: 6.5rem; }

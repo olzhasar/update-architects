@@ -1,0 +1,32 @@
+{% load menu_tags %}
+<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div id="navbar-brand" class="navbar-brand">
+      <a class="navbar-item navbar-light" href="/">
+	{% with "/media/original_images/"|add:logo as logo_dark %}
+	<img src="{{ logo_dark }}" >
+	{% endwith %}
+      </a>
+	<a class="navbar-item navbar-dark" href="/">
+	  <img src="/media/original_images/logo_white.png" >
+	</a>
+
+	  <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+	    <span aria-hidden="true"></span>
+	    <span aria-hidden="true"></span>
+	    <span aria-hidden="true"></span>
+	  </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+
+      <div class="navbar-end">
+	{% main_menu max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/main_menu.html" sub_menu_template="menus/sub_menu.html" %}
+      </div>
+      <div class="navbar-footer">
+	<a class="navbar-item" href="tel:+77273288989">+7 727 328 8989</a>
+	<a class="navbar-item" href="mailto:ab@up2date.kz">ab@up2date.kz</a>
+      </div>
+    </div>
+  </div>
+</nav>

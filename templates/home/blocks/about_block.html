@@ -1,51 +1,26 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<!-- Services Section -->
-<section class="page-section" id="services">
-    <div class="container relative">
-
-        <h2 class="section-title font-alt mb-sm-40">
-            {{ self.title }}
-        </h2>
-
-
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs tpl-alt-tabs font-alt pt-30 pt-sm-0 pb-30 pb-sm-0">
-
-            {% for service in services %}
-            <li>
-                <a href="{% pageurl service %}">
-
-                    <div class="alt-tabs-icon">
-                        <span class="{{ service.icon_name }}"></span>
-                    </div>
-
-                    {{ service.title }}
-                </a>
-            </li>
-            {% endfor %}
-
-        </ul>
-        <br>
-        <!-- End Nav tabs -->
-        <div class="section-text">
-            <div class="row">
-                <div class="col-md-4 mb-md-40 mb-xs-30">
-                    <blockquote class="mb-0">
-                        <p>
-                            {{ self.header_text }}
-                        </p>
-                    </blockquote>
-                </div>
-                <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                    {{ self.left_column }}
-                </div>
-                <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                    {{ self.right_column }}
-                </div>
-            </div>
-        </div>
-
+<div id="home-about" class="hero is-warning is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-variable is-6">
+	<div class="column is-3">
+	  <p class="subtitle">
+	    {{ self.header_text }}
+	  </p>
+	</div>
+	<div class="column is-9">
+	  <div class="content">
+	    {{ self.content|safe }}
+	    <p>
+	      UP2DATE специализируется на разработке дизайна интерьеров частных и коммерческих объектов. Мы проектируем кафе, рестораны, бары, офисы и частные апартаменты с 2015 года. Работаем преимущественно в современном стиле и каждый наш проект уникален и проработан до мельчайших деталей.
+	    </p>
+	    <p>
+	      Наша команда состоит из архитекторов и дизайнеров. Трепетное отношение к делу позволяют учитывать все нюансы проектирования и строительства. В скором будущем мы планируем запустить архитектурное направление.
+	    </p>
+	  </div>
+	</div>
+      </div>
     </div>
-</section>
-<!-- End Services Section -->
+  </div>
+</div>

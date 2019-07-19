@@ -1,63 +1,50 @@
 {% load wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags puput_tags %}
 
-<!-- Portfolio Section -->
-<section class="page-section pb-0" id="portfolio">
-    <div class="relative">
-
-        <h2 class="section-title font-alt mb-70 mb-sm-40">
-            {{ self.title }}
-        </h2>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-
-                    <div class="section-text align-center mb-70 mb-xs-40">
-                        {{ self.subtitle }}
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Works Grid -->
-        <ul class="works-grid work-grid-3 work-grid-gut clearfix font-alt hover-white hide-titles" id="work-grid">
-
-            {% for project in self.projects %}
-            <!-- Work Item (External Page) -->
-            <li class="work-item">
-                <a href="{% pageurl project %}" class="work-ext-link">
-                    {% image project.images.first.image fill-650x418 as project_image %}
-                    <div class="work-img">
-                        <img class="work-img" src="{{ project_image.url }}" alt="{{ project_image.alt }}" />
-                    </div>
-                    <div class="work-intro">
-                        <h3 class="work-title">{{ project.title }}</h3>
-                    </div>
-                </a>
-            </li>
-            <!-- End Work Item -->
-            {% endfor %}
-
-        </ul>
-        <!-- End Works Grid -->
-
+<section id="projects">
+  <div id="home-projects" class="section is-medium">
+    <div class="container has-text-centered">
+      <header class="header">
+	<h2 class="title">{{ self.title }}</h2>
+	<p class="subtitle">{{ self.subtitle }}</p>
+      </header>
+      <div class="columns">
+	{% for project in self.projects %}
+	<div class="column is-one-third">
+	  <div class="card project-card">
+	    <a href="project.html">
+	      <div class="card-image">
+		<figure class="image">
+		  {% image project.images.first.image width-32 as thumbnail %}
+		  {% image project.images.first.image width-640 as full_sized %}
+		  <img class="lazy" src="{{ thumbnail.url }}" data-src="{{ full_sized.url }}" alt="Placeholder image">
+		</figure>
+	      </div>
+	      <div class="card-content">
+		<div class="columns">
+		  <div class="column">
+		    <p class="card-title">{{ project.title }}</p>
+		  </div>
+		  <div class="column">
+		    <p class="card-subtitle">{{ project.subtitle }}</p>
+		  </div>
+		</div>
+	      </div>
+	    </a>
+	  </div>
+	</div>
+	{% endfor %}
+      </div>
     </div>
-</section>
-<!-- End Portfolio Section -->
+  </div>
 
-
-<!-- Call Action Section -->
-<section class="small-section bg-dark">
-    <div class="container relative">
-
-        <div class="align-center">
-            <h3 class="banner-heading font-alt">Хотите увидеть больше работ?</h3>
-            <div class="local-scroll">
-                <a href="{{ self.portfolio_link }}" class="btn btn-mod btn-w btn-medium btn-round">Перейти в портфолио</a>
-            </div>
-        </div>
-
+  <div class="hero call-to-action">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+	<p class="title">
+	  Хотите увидеть больше работ?
+	</p>
+	<a class="button is-medium" href="{{ self.portfolio_link }}">Перейти в портфолио</a>
+      </div>
     </div>
+  </div>
 </section>
-<!-- End Call Action Section -->

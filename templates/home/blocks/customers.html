@@ -1,36 +1,18 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-
-<!-- Divider -->
-<hr class="mt-0 mb-0 "/>
-<!-- End Divider -->
-
-<!-- Logotypes Section -->
-<section class="small-section pt-20 pb-20">
-    <div class="container relative">
-
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-
-                <div class="small-item-carousel black owl-carousel mb-0 animate-init" data-anim-type="fade-in-right-large" data-anim-delay="100">
-
-                    {% for customer in self %}
-                    <!-- Logo Item -->
-                    <div class="logo-item">
-                        {% image customer.logo width-67 %}
-                    </div>
-                    <!-- End Logo Item -->
-                    {% endfor %}
-
-
-                </div>
-
-             </div>
-         </div>
-
-     </div>
-</section>
-<!-- End Logotypes -->
-
-<!-- Divider -->
-<hr class="mt-0 mb-0 "/>
-<!-- End Divider -->
+<div class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+	<div class="columns">
+	  {% for customer in self %}
+	  <div class="column">
+	    {% image customer.logo width-16 as thumbnail %}
+	    {% image customer.logo width-64 as full_sized %}
+	    <img class="lazy" src="{{ thumbnail.url }}" data-src="{{ full_sized.url }}" alt="Placeholder image">
+	  </div>
+	  {% endfor %}
+	</div>
+      </div>
+    </div>
+  </div>
+</div>

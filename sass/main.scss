@@ -156,9 +156,7 @@ footer {
 }
 
 #home-hero {
-  background:
-    linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ),
-    url('../static/img/banner.jpg');
+  background: $dark;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -239,6 +237,10 @@ footer {
   @include touch {
     padding: .75rem 1.5rem;
   }
+}
+
+.navbar-link {
+  color: $white;
 }
 
 .navbar-burger {

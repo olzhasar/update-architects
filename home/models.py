@@ -18,25 +18,25 @@ from puput.models import EntryPage
 class HomePage(Page):
 
     body = StreamField([
-        ('main_slider',
-         blocks.ListBlock(
-             blocks.StructBlock([
+        ('main_banner',
+         blocks.StructBlock(
+             [
                  ('image', ImageChooserBlock()),
-                 ('title', blocks.CharBlock(required=False)),
+                 ('title', blocks.CharBlock()),
                  ('subtitle', blocks.CharBlock(required=False)),
-                 ('button_text', blocks.CharBlock(required=False)),
-                 ('button_link', blocks.URLBlock(required=False)),
              ],
-                                icon='image'),
-             template='home/blocks/main_slider.html')),
+             template='home/blocks/main_banner.html'
+         )),
         ('about_block',
-         blocks.StructBlock([
-             ('title', blocks.CharBlock()),
-             ('header_text', blocks.CharBlock()),
-             ('left_column', blocks.RichTextBlock()),
-             ('right_column', blocks.RichTextBlock()),
-         ],
-                            template='home/blocks/about_block.html')),
+         blocks.StructBlock(
+             [
+                 ('title', blocks.CharBlock()),
+                 ('header_text', blocks.CharBlock()),
+                 ('left_column', blocks.RichTextBlock()),
+                 ('right_column', blocks.RichTextBlock()),
+             ],
+             template='home/blocks/about_block.html'
+         )),
         ('portfolio_block',
          blocks.StructBlock([
              ('title', blocks.CharBlock()),
@@ -79,6 +79,7 @@ class HomePage(Page):
                 'priority': 1.0
             }
         ]
+
 
 class RegularPage(Page):
     is_abstract = True
@@ -146,7 +147,8 @@ class ServicePage(RegularPage):
 
 class AboutPage(RegularPage):
     parent_page_types = ['home.HomePage']
-    subpage_types = ['home.JobPostings', 'home.Contacts', 'home.StandardPage', 'home.TeamPage']
+    subpage_types = ['home.JobPostings', 'home.Contacts',
+                     'home.StandardPage', 'home.TeamPage']
 
 
 class TeamPage(RegularPage):
@@ -154,8 +156,8 @@ class TeamPage(RegularPage):
     body_subtitle = models.CharField(max_length=256, null=True, blank=True)
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
-	FieldPanel('body_title'),
-	FieldPanel('body_subtitle'),
+        FieldPanel('body_title'),
+        FieldPanel('body_subtitle'),
         InlinePanel('members', label='Team members')
     ]
 
