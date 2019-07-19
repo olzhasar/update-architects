@@ -1,9 +1,14 @@
 {% load i18n wagtailroutablepage_tags %}
 
-<div class="tags">
+<p class="menu-label">Тэги:</p>
+<div class="block">
+  <div class="tags are-medium">
     {% for tag in tags %}
-        <a href="{% routablepageurl blog_page "entries_by_tag" tag.slug %}">{{ tag }}</a>
+    <span class="tag">
+      <a href="{% routablepageurl blog_page "entries_by_tag" tag.slug %}">{{ tag }}</a>
+    </span>
     {% empty %}
-        'Тэгов пока нет'
+    'Тэгов пока нет'
     {% endfor %}
+  </div>
 </div>

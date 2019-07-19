@@ -1,2 +1,25 @@
-{% extends 'regular.html' %}
+{% extends 'base.html' %}
 {% load wagtailcore_tags %}
+
+{% block content %}
+<main>
+  <div class="section">
+    <div class="container">
+      <div class="columns">
+	<div class="column is-8 is-offset-2">
+	  <article>
+	    {% include 'partials/page_header.html' %}
+	    <div class="content">{{ page.body|richtext }}</div>
+	  </article>
+	  <div class="section has-text-centered">
+	    <a class="button is-dark is-outlined" href="{% slugurl 'services' %}">
+	      <span class="icon"><i class="fas fa-arrow-left"></i></span>
+	      <span>Все услуги</span>
+	    </a>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

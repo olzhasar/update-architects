@@ -25,7 +25,7 @@
 
     {# Global stylesheets #}
 
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     {% compress css %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     {% endcompress %}
@@ -42,21 +42,6 @@
 
     {% block nav %}
     {% include 'partials/navbar.html' with logo='logo_black.png' %}
-    <nav class="main-nav js-stick">
-      <div class="full-wrapper relative clearfix">
-	<div class="nav-logo-wrap local-scroll">
-	  <a href="/" class="logo">
-	    <img src="/media/original_images/logo_black.png" alt="" />
-	  </a>
-	</div>
-	<div class="mobile-nav">
-	  <i class="fa fa-bars"></i>
-	</div>
-	<div class="inner-nav desktop-nav">
-	  {% main_menu max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/main_menu.html" sub_menu_template="menus/sub_menu.html" %}
-	</div>
-      </div>
-    </nav>
     {% endblock %}
 
     {% block content %}{% endblock %}
@@ -67,7 +52,7 @@
 	  <div class="level-left">
 	    <a href="/">
 	      <figure class="image is-64x64">
-		<img src="media/original_images/logo_black.png" >
+		<img src="/media/original_images/logo_black.png" >
 	      </figure>
 	    </a>
 	  </div>

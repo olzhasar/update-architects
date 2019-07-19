@@ -1,42 +1,47 @@
-{% extends 'regular.html' %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% extends 'base.html' %}
+{% load wagtailcore_tags %}
 
-{% block body %}
+{% block content %}
 
-<section class="page-section">
-    <div class="container relative">
-
-      <div class="row">
-	<div class="col-md-12">
-          {{ page.body|richtext }}
+<main>
+  <div class="section">
+    <div class="container">
+      <div class="columns">
+	<div class="column is-8 is-offset-2">
+	  <article>
+	    {% include 'partials/page_header.html' %}
+	    <div class="content">
+	      {{ page.body|richtext }}
+	    </div>
+	  </article>
+	  <div class="service-card-list">
+	    <div class="columns">
+	      {% for service in services %}
+	      <div class="column">
+		<article class="card service-card">
+		  <header class="card-header">
+		    <h2 class="card-header-title">
+		      {{ service.title }}
+		    </h2>
+		  </header>
+		  <div class="card-content">
+		    {{ service.short_description }}
+		  </div>
+		  <footer class="card-footer">
+		    <a href="{% pageurl service %}" class="button is-light is-fullwidth">
+		      <span>Подробнее</span>
+		      <span class="icon"><i class="fas fa-arrow-right"></i></span>
+		    </a>
+		  </footer>
+		</article>
+	      </div>
+	      {% endfor %}
+	    </div>
+	  </div>
 	</div>
       </div>
-      
-       <div class="row multi-columns-row">
-
-            {% for service in services %}
-            <!-- Post Item -->
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.1s" data-wow-duration="2s">
-
-                <div class="post-prev-img">
-                    <a href={% pageurl service %}>{% image service.cover_image fill-370x200 format-jpeg %}</a>
-                </div>
-
-                <div class="post-prev-title font-alt">
-                    <a href={% pageurl service %}>{{ service.title }}</a>
-                </div>
-
-                <div class="post-prev-text">
-                    {{ service.short_description }}
-                </div>
-
-            </div>
-            <!-- End Post Item -->
-            {% endfor %}
-
-        </div>
-
     </div>
-</section>
+  </div>
+</main>
 
 {% endblock %}

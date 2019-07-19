@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+
+<figure class="image">
+  {% image img width-32 as thumb %}
+  {% image img width-480 as x1 %}
+  {% image img width-960 as x2 %}
+  {% image img width-1440 as x3 %}
+  {% image img width-1920 as x4 %}
+  <img class="lazy" src="{{ thumb.url }}" data-src="{{ x1.url }}" srcset="{{ x1.url }} 960w, {{ x2.url }} 1440w, {{ x3.url }} 1920w, {{ x4.url }} 3840w" alt="{{ x1.alt }}">
+</figure>

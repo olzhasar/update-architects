@@ -20,67 +20,39 @@
 
 {% block blog_content %}
 
-{% with per_page=blog_page.num_entries_page %}
-    {# 'paginate' tag cannot render dotted variables, so we need to create a context var #}
-    {% paginate per_page entries %}
+{% if search_term %}
+<div class="searchTerm">
+  <span class="lead">
+    Публикации по запросу "<strong>{{ search_term }}</strong>":
+  </span>
+</div>
+<br>
+{% endif %}
 
-    {% if search_term %}
-        <div class="searchTerm">
-          <span class="lead">
-          Публикации по запросу "<strong>{{ search_term }}</strong>":
-          </span>
-        </div>
-        <hr>
-        <br>
-    {% endif %}
+{% for entry in entries %}
 
-    {% for entry in entries %}
-
-      <div class="blog-item">
-
-          <!-- Post Title -->
-          <h2 class="blog-item-title font-alt"><a href="{% entry_url entry blog_page %}">{{ entry.title }}</a></h2>
-
-          <!-- Author, Categories, Comments -->
-          <div class="blog-item-data">
-              <i class="fa fa-clock-o"></i> {{ entry.date|date:"SHORT_DATE_FORMAT" }}
-              <span class="separator">&nbsp;</span>
-              <i class="fa fa-folder-open"></i>
-              {% for category in entry.categories.all %}
-                <a href="{% routablepageurl blog_page "entries_by_category" category.slug %}">{{ category.name }}</a>{% if not forloop.last %},{% endif %}
-              {% endfor %}
-          </div>
-
-          {% image entry.header_image fill-1140x642 as header_image %}
-          <!-- Image -->
-          <div class="blog-media">
-              <a href="{% entry_url entry blog_page %}"><img alt="{{ entry.header_image.title }}" src="{{ header_image.url }}"></a>
-          </div>
-
-          <!-- Text Intro -->
-          <div class="blog-item-body">
-            {% if entry.excerpt %}
-                {{ entry.excerpt|richtext }}
-            {% else %}
-                {{ entry.body|richtext|truncatewords_html:70 }}
-            {% endif %}
-          </div>
-
-          <!-- Read More Link -->
-          <div class="blog-item-foot">
-              <a href="{% entry_url entry blog_page %}" class="btn btn-mod btn-round  btn-small">Читать далее <i class="fa fa-angle-right"></i></a>
-          </div>
-
-      </div>
-
-    {% empty %}
-        <span>По Вашему запросу ничего не найдено</span>
-
-    {% endfor %}
-
-  <div class="pagination">
-      {% show_paginator %}
+<article class="card blog-card">
+  <div class="card-image">
+    <a href="{% entry_url entry blog_page %}">
+      {% include 'partials/image_float.html' with img=entry.header_image %}
+    </a>
   </div>
-{% endwith %}
+  <div class="card-content">
+    <a href="{% entry_url entry blog_page %}">
+      <p class="title">{{ entry.title }}</p>
+      {% if entry.excerpt %}
+      {{ entry.excerpt|richtext }}
+      {% else %}
+      {{ entry.body|richtext|truncatewords_html:70 }}
+      {% endif %}
+    </a>
+  </div>
+</article>
+
+{% empty %}
+
+<span>По Вашему запросу ничего не найдено</span>
+
+{% endfor %}
 
 {% endblock blog_content %}

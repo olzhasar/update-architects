@@ -1,2 +1,38 @@
-{% extends 'regular.html' %}
+{% extends 'base.html' %}
 {% load wagtailcore_tags %}
+
+{% block content %}
+<main>
+  <article class="section">
+    <div class="container">
+      <div class="columns">
+	<div class="column is-8 is-offset-2">
+	  {% include 'partials/page_header.html' %}
+	  <div class="content">
+	    {{ page.body | richtext }}
+	  </div>
+	  <div class="columns is-multiline">
+	    {% for member in page.members.all %}
+	    <div class="column is-6">
+	      <div class="card">
+		<div class="card-image">
+		  {% include 'image_float.html' with img=member.avatar %}
+		</div>
+		<div class="card-content has-text-centered">
+		  <p class="card-title">
+		    {{ member.name }}
+		  </p>
+		  <p class="card-subtitle">
+		    {{ member.job_title }}
+		  </p>
+		</div>
+	      </div>
+	    </div>
+	    {% endfor %}
+	  </div>
+	</div>
+      </div>
+    </div>
+  </article>
+</main>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% load wagtailcore_tags %}
+
+<div class="card project-card">
+  <a href="{% pageurl project %}">
+    <div class="card-image">
+      <figure class="image">
+	{% include 'partials/image.html' with img=project.images.first.image %}
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="columns">
+	<div class="column">
+	  <p class="card-title">{{ project.title }}</p>
+	</div>
+	<div class="column">
+	  <p class="card-subtitle">{{ project.subtitle }}</p>
+	</div>
+      </div>
+    </div>
+  </a>
+</div>

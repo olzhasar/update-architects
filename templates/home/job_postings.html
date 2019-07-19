@@ -1,35 +1,41 @@
-{% extends 'regular.html' %}
+{% extends 'base.html' %}
 {% load wagtailcore_tags %}
 
-{% block body %}
-
-<section class="page-section">
-    <div class="container relative">
-
-        <div class="row section-text">
-            <div class="col-md-8 col-md-offset-2">
-
-                <!-- Accordion -->
-                {{ page.body|richtext }}
-
-                <dl class="accordion">
-
-                    {% for posting in page.postings.all %}
-                    <dt>
-                        <a href="">{{ posting.job_title }}</a>
-                    </dt>
-                    <dd>
-                        {{ posting.description|richtext }}
-                    </dd>
-                    {% endfor %}
-
-                </dl>
-                <!-- End Accordion -->
-
-            </div>
-        </div>
-
+{% block content %}
+<main>
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+	<div class="column is-6 is-offset-3">
+	  {% include 'partials/page_header.html' %}
+	  <div class="content">{{ page.body|richtext }}</div>
+	</div>
+      </div>
     </div>
-</section>
+  </section>
 
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+	<div class="column is-6 is-offset-3">
+	  <h1 class="title has-text-centered is-size-6">Текущие вакансии:</h1>
+	  <hr>
+	  {% with page.postings.all as postings %}
+	  {% if postings %}
+	  {% for posting in postings %}
+	  <article class="block">
+	    <h3 class="title is-6">{{ posting.job_title }}</h3>
+	    <div class="content">{{ posting.description|richtext }}</div>
+	  </article>
+	  <hr>
+	  {% endfor %}
+	  {% else %}
+	  <p class="subtitle">На данный момент у нас нет открытых вакансий</p>
+	  {% endif %}
+	  {% endwith %}
+	</div>
+      </div>
+    </div>
+  </section>
+</main>
 {% endblock %}

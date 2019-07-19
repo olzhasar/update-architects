@@ -1,81 +1,37 @@
-{% extends "regular.html" %}
+{% extends "base.html" %}
 
 {% load static i18n wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags puput_tags %}
 
-{% block body %}
-    <section class="page-section">
-        <div class="container relative">
+{% block content %}
 
-            <div class="row">
-
-                <!-- Content -->
-                <div class="col-sm-8">
-
-                {% block blog_content %}
-
-                {% endblock blog_content %}
-
-                </div>
-                <!-- End Content -->
-
-                <!-- Sidebar -->
-                <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
-
-                    <!-- Search Widget -->
-                    <div class="widget">
-                        <form name="search_form" class="form-inline form" method="get" action="{% routablepageurl blog_page 'entries_search' %}">
-                            <div class="search-wrap">
-                                <button class="search-button animate" type="submit" title="Найти">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                                <input type="search" name="q" class="form-control search-field" placeholder="Поиск...">
-                            </div>
-                        </form>
-                    </div>
-                    <!-- End Search Widget -->
-
-                    <!-- Widget -->
-                    <div class="widget">
-
-                        <h5 class="widget-title font-alt">Категории</h5>
-
-                        <div class="widget-body">
-                            {% categories_list %}
-                        </div>
-
-                    </div>
-                    <!-- End Widget -->
-
-                    <!-- Widget -->
-                    <div class="widget">
-
-                        <h5 class="widget-title font-alt">Тэги</h5>
-
-                        <div class="widget-body">
-                            {% tags_list %}
-                        </div>
-
-                    </div>
-                    <!-- End Widget -->
-
-                    <!-- Widget -->
-                    <div class="widget">
-
-                        <h5 class="widget-title font-alt">Недавние публикации</h5>
-
-
-                        <div class="widget-body">
-                            {% recent_entries %}
-                        </div>
-
-                    </div>
-                    <!-- End Widget -->
-
-                </div>
-                <!-- End Sidebar -->
-            </div>
-
-        </div>
-    </section>
-    <!-- End Section -->
-{% endblock body %}
+<main>
+  <div class="section">
+    <div class="container">
+      {% include 'partials/page_header.html' %}
+      <div class="columns">
+	<div class="column is-7 is-offset-1">
+	{% block blog_content %}{% endblock blog_content %}
+	</div>
+	<div class="column is-3">
+	  <aside class="menu">
+	    {% categories_list %}
+	    {% tags_list %}
+	    <form method="GET" action="{% routablepageurl blog_page 'entries_search' %}">
+	      <div class="field has-addons">
+		<div class="control is-expanded">
+		  <input name="q" class="input" type="search" placeholder="Поиск публикации">
+		</div>
+		<div class="control">
+		  <button class="button is-dark" type="submit">
+		    <span class="icon"><i class="fas fa-search"></i></span>
+		  </button>
+		</div>
+	      </div>
+	    </form>
+	  </aside>
+	</div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

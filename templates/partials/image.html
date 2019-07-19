@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+
+<figure class="image">
+  {% image img fill-32x18 as thumb %}
+  {% image img fill-480x360 as x1 %}
+  {% image img fill-960x720 as x2 %}
+  {% image img fill-1440x1080 as x3 %}
+  {% image img fill-1920x1440 as x4 %}
+  <img class="lazy" src="{{ thumb.url }}" data-src="{{ x1.url }}" srcset="{{ x1.url }} 1x, {{ x2.url }} 2x, {{ x3.url }} 3x, {{ x4.url }} 4x" alt="{{ x1.alt }}">
+</figure>

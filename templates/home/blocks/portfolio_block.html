@@ -1,5 +1,3 @@
-{% load wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags puput_tags %}
-
 <section id="projects">
   <div id="home-projects" class="section is-medium">
     <div class="container has-text-centered">
@@ -9,28 +7,8 @@
       </header>
       <div class="columns">
 	{% for project in self.projects %}
-	<div class="column is-one-third">
-	  <div class="card project-card">
-	    <a href="project.html">
-	      <div class="card-image">
-		<figure class="image">
-		  {% image project.images.first.image width-32 as thumbnail %}
-		  {% image project.images.first.image width-640 as full_sized %}
-		  <img class="lazy" src="{{ thumbnail.url }}" data-src="{{ full_sized.url }}" alt="Placeholder image">
-		</figure>
-	      </div>
-	      <div class="card-content">
-		<div class="columns">
-		  <div class="column">
-		    <p class="card-title">{{ project.title }}</p>
-		  </div>
-		  <div class="column">
-		    <p class="card-subtitle">{{ project.subtitle }}</p>
-		  </div>
-		</div>
-	      </div>
-	    </a>
-	  </div>
+	<div class="column is-4">
+	  {% include 'partials/project_card.html' %}
 	</div>
 	{% endfor %}
       </div>
