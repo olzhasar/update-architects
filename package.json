@@ -1,0 +1,25 @@
+{
+  "name": "up2date",
+  "version": "1.0.0",
+  "description": "This is a corporate website for architecture &amp; interior design studio. The studio needed an effective way of presenting their great portfolio projects as well as an intuitive and easy-to-use admin interface. Guys also needed some blog functionality on their website. Wagtail was chosen as an ideal instrument matching all the requirements specified.",
+  "main": "sass/main.scss",
+  "scripts": {
+    "css-build": "node-sass --omit-source-map-url sass/main.scss update/static/css/main.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olzhasar/update-architects.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olzhasar/update-architects/issues"
+  },
+  "homepage": "https://github.com/olzhasar/update-architects#readme",
+  "devDependencies": {
+    "bulma": "^0.7.5",
+    "node-sass": "^4.12.0"
+  }
+}

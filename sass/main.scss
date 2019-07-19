@@ -1,0 +1,389 @@
+@charset "utf-8";
+@import "../node_modules/bulma/sass/utilities/initial-variables.sass";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Scada&display=swap&subset=cyrillic');
+
+$family-sans-serif: "Open Sans", sans-serif;
+$title-family: "Scada", sans-serif;
+
+$weight-bold: 600;
+$body-weight: $weight-light;
+$title-size: $size-4;
+$title-weight: 400;
+$subtitle-size: $size-6;
+$subtitle-weight: 300;
+
+$dark: #333;
+$text: $dark;
+$link: $text;
+$warning: #f8f8f8;
+
+$box-radius: none;
+
+$button-padding-horizontal: 3rem;
+$button-padding-vertical: .25rem;
+
+$card-shadow: none;
+
+$control-radius: 2px;
+$control-radius-small: 2px;
+$control-height: 2.5rem;
+$input-radius: 2px;
+
+$message-header-background-color: $text;
+$message-header-radius: none;
+$message-body-radius: none;
+$message-background-color: $warning;
+
+$navbar-height: 3.5rem;
+$navbar-item-img-max-height: 3.5rem; 
+$navbar-item-hover-color: $grey-dark;
+
+$section-padding: 3rem 1rem;
+$section-padding-medium: 6rem 1rem;
+$section-padding-large: 9rem 1rem;
+
+$table-cell-border: none;
+$table-cell-padding: .25em 1em;
+
+$footer-background-color: #f8f8f8;
+$footer-padding: 3rem 1rem;
+
+
+@import "../node_modules/bulma/bulma.sass";
+
+
+a {
+  font-weight: 400;
+}
+
+a.underlined {
+  &:hover {
+    border-bottom: 1px solid $link;
+    padding-bottom: .5rem;
+  }
+  &:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+}
+
+body {
+  &.is-fixed {
+    position: fixed;
+  }
+}
+
+.blog-card {
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+  .card-content {
+    padding: 0;
+    a {
+      font-weight: $body-weight;
+    }
+    .title {
+      font-size: 1.5rem;
+      margin-top: 1.25rem;
+      margin-bottom: .5rem;
+    }
+  }
+}
+
+.blog-post-image {
+  margin: 1.5rem 0;
+}
+
+.button {
+  text-transform: uppercase;
+  @include desktop {
+    letter-spacing: .2em;
+  }
+  font-size: .75rem;
+  &.is-medium {
+    font-size: .75rem;
+  }
+}
+
+.call-to-action {
+  background-color: #111;
+  .hero-body {
+    padding: 4.5rem 1rem;
+  }
+  .title {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1em;
+  }
+}
+
+.card-title {
+  color: $text;
+}
+
+.card-subtitle {
+  color: $grey;
+}
+
+.contacts-columns {
+  .title {
+    font-size: 1rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+footer {
+  .columns {
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.google-map {
+  border: 0;
+  min-height: 30rem;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  padding-bottom: 3rem;
+}
+
+.hero-body {
+  padding: 3rem 1rem;
+}
+
+#home-hero {
+  background:
+    linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ),
+    url('../static/img/banner.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .navbar-item, .title, .subtitle, .navbar-burger {
+    color: $white;
+    text-shadow: 0 2px 0 $dark;
+  }
+  .title, .subtitle {
+    padding-bottom: 3rem;
+    @include desktop {
+      max-width: 60%;
+      margin: auto;
+    }
+  }
+  .subtitle {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+  }
+}
+
+#home-about {
+  .title, .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+}
+
+.input, .textarea {
+  text-transform: uppercase;
+  font-size: .75rem;
+}
+
+.lazy {
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+  // force hardware acceleration (Safari):
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.menu {
+  @include desktop {
+    padding-left: 1.5rem;
+  }
+  .menu-label {
+    color: $text;
+    font-weight: $title-weight;
+    font-family: $title-family;
+    font-size: $size-5;
+  }
+  .menu-list {
+    a {
+      padding: 0.5em 0;
+    }
+  }
+  .button {
+    padding: .25rem 1.5rem;
+  }
+}
+
+.navbar {
+  @include desktop {
+    padding: 1rem 0;
+  }
+  box-shadow: 0 1px 0 rgba(0,0,0,.05);
+}
+
+.navbar-item img {
+  @include touch {
+    max-height: 3.5rem;
+  }
+}
+
+.navbar-item {
+  letter-spacing: .2em;
+  font-size: .75em;
+  color: $grey;
+  @include touch {
+    padding: .75rem 1.5rem;
+  }
+}
+
+.navbar-burger {
+  height: 6.5rem;
+}
+
+.navbar-brand {
+  .navbar-item {
+    @include touch {
+      padding: 1.5rem;
+    }
+    padding: .75rem;
+  }
+  .navbar-dark {
+    display: none;
+  }
+}
+
+.navbar-brand.is-active {
+  background: $grey-darker;
+  color: $light;
+  .navbar-dark {
+    display: flex;
+  }
+  .navbar-light {
+    display: none;
+  }
+  .navbar-burger {
+    color: $white;
+  }
+}
+
+.navbar-footer {
+  display: none;
+}
+
+.navbar-end {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.navbar-menu.is-active {
+  height: calc(100vh - 6.5rem);
+  height: calc(var(--vh, 1vh) * 100 - 6.5rem);
+  width: 100%;
+  background: $grey-darker;
+  box-shadow: none;
+  overflow: hidden;
+  .navbar-item {
+    color: $white;
+    &:hover {
+      background: $grey-darker;
+    }
+  }
+  .navbar-end {
+    font-size: 1.25rem;
+    background: $grey-darker;
+  }
+  .navbar-footer {
+    font-size: 1.25rem;
+    display: block;
+    position: absolute;
+    bottom: 1.5rem;
+  }
+}
+
+.page {
+  margin-bottom: 3rem;
+}
+
+.projects {
+  color: $text;
+  .projects-footer {
+    margin-top: 3rem;
+  }
+}
+
+.project-card {
+  box-shadow: none;
+  text-align: left;
+  .card-content {
+    padding: 1rem 0.5rem;
+  }
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .card-image {
+    img {
+      &:hover {
+	-webkit-filter: brightness(70%);
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+      }
+    }
+  }
+}
+
+#project-info {
+  margin-bottom: 0;
+}
+
+.service-card-list {
+  margin-top: 3rem;
+}
+
+.service-card {
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+  .card-header {
+    box-shadow: none;
+    .card-header-title {
+      font-family: $title-family;
+      font-weight: 300;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      padding: 0;
+    }
+  }
+  .card-content {
+    padding: 1em 0;
+  }
+  .card-footer {
+    border: none;
+    .card-footer-item {
+      justify-content: left;
+      padding: 0;
+    }
+  }
+}
+
+.table {
+  th {
+    padding-left: 0;
+    font-weight: $body-weight;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}

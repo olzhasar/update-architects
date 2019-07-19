@@ -110,3 +110,6 @@ secret_settings.py
 
 # Redis dump
 *.rdb
+
+node_modules/
+theme/
