@@ -145,26 +145,17 @@ class ServicePage(RegularPage):
 class AboutPage(RegularPage):
     parent_page_types = ['home.HomePage']
     subpage_types = ['home.JobPostings', 'home.Contacts',
-                     'home.StandardPage', 'home.TeamPage']
-
-
-class TeamPage(RegularPage):
-    body_title = models.CharField(max_length=256, null=True, blank=True)
-    body_subtitle = models.CharField(max_length=256, null=True, blank=True)
-    content_panels = Page.content_panels + [
-        FieldPanel('subtitle'),
-        FieldPanel('body_title'),
-        FieldPanel('body_subtitle'),
+                     'home.StandardPage']
+    content_panels = RegularPage.content_panels + [
         InlinePanel('members', label='Team members')
     ]
 
 
 class TeamMember(Orderable):
     page = ParentalKey(
-        TeamPage, on_delete=models.CASCADE, related_name='members')
+        AboutPage, on_delete=models.CASCADE, related_name='members')
     name = models.CharField(max_length=255)
     job_title = models.CharField(max_length=255)
-    hover_content = RichTextField(null=True, blank=True)
     body = None
     avatar = models.ForeignKey(
         'wagtailimages.Image',
@@ -176,7 +167,6 @@ class TeamMember(Orderable):
     panels = [
         FieldPanel('name'),
         FieldPanel('job_title'),
-        FieldPanel('hover_content', classname='full'),
         ImageChooserPanel('avatar'),
     ]
 
@@ -185,7 +175,7 @@ class JobPostings(RegularPage):
     content_panels = RegularPage.content_panels + [
         InlinePanel('postings', label='Job postings')
     ]
-    parent_page_types = ['home.AboutPage']
+    parent_page_types = ['home.HomePage']
     subpage_types = []
 
 
@@ -239,7 +229,7 @@ class Contacts(RegularPage, AbstractEmailForm):
         ], "Email"),
     ]
 
-    parent_page_types = ['home.AboutPage']
+    parent_page_types = ['home.HomePage']
     subpage_types = []
 
 

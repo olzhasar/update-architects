@@ -12,9 +12,11 @@
 	<div class="column">
 	  <p class="card-title">{{ project.title }}</p>
 	</div>
+	{% if project.subtitle %}
 	<div class="column">
 	  <p class="card-subtitle">{{ project.subtitle }}</p>
 	</div>
+	{% endif %}
       </div>
     </div>
   </a>

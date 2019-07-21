@@ -7,7 +7,12 @@
 <main>
   <div class="section">
     <div class="container">
-      {% include 'partials/page_header.html' %}
+      <header class="header">
+	<h1 class="title">{{ page.title }}</h1>
+	{% if page.description %}
+	<p class="subtitle">{{ page.description }}</p>
+	{% endif %}
+      </header>
       <div class="columns">
 	<div class="column is-7 is-offset-1">
 	{% block blog_content %}{% endblock blog_content %}

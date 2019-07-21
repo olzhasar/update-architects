@@ -43,6 +43,7 @@ class ProjectCategory(Orderable):
 
 class Project(Page):
     order = models.SmallIntegerField(default=0)
+    subtitle = models.CharField(max_length=255, blank=True, null=True)
     categories = ParentalManyToManyField(ProjectCategory, blank=True)
     year = models.IntegerField(blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
@@ -50,14 +51,15 @@ class Project(Page):
     authors = models.CharField(max_length=255, blank=True, null=True)
     status = models.CharField(max_length=255, blank=True, null=True)
 
+    description = RichTextField(blank=True, null=True)
     left_column = RichTextField(blank=True, null=True)
     right_column = RichTextField(blank=True, null=True)
 
     body = None
 
     content_panels = Page.content_panels + [
+        FieldPanel('subtitle'),
         FieldPanel('categories'),
-        InlinePanel('images', label='Project images'),
         MultiFieldPanel(
             [
                 FieldPanel('year'),
@@ -75,6 +77,8 @@ class Project(Page):
             ],
             heading='Project description'
         ),
+        FieldPanel('description'),
+        InlinePanel('images', label='Project images'),
     ]
 
     promote_panels = Page.promote_panels + [

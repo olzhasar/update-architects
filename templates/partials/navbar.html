@@ -24,8 +24,7 @@
 	{% main_menu max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/main_menu.html" sub_menu_template="menus/sub_menu.html" %}
       </div>
       <div class="navbar-footer">
-	<a class="navbar-item" href="tel:+77273288989">+7 727 328 8989</a>
-	<a class="navbar-item" href="mailto:ab@up2date.kz">ab@up2date.kz</a>
+	{% flat_menu 'contacts' template="menus/main_menu.html" %} 
       </div>
     </div>
   </div>
