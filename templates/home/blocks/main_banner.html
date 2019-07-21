@@ -2,7 +2,7 @@
 
 {% image self.image fill-1920x1080 format-jpeg as background %}
 
-<div id="home-hero" class="hero is-fullheight" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('{{ background.url }}');">
+<div id="home-hero" class="hero is-fullheight" style="background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('{{ background.url }}');">
   <div class="hero-head">
     {% include 'partials/navbar.html' with logo='logo_white.png' %}
   </div>
