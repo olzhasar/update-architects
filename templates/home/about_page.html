@@ -15,10 +15,10 @@
 	  <div class="columns is-multiline">
 	    {% for member in page.members.all %}
 	    <div class="column is-6">
-	      <div class="card" itemprop="employee" itemscope itemtype="Person">
+	      <div class="card" itemprop="employee" itemscope itemtype="https://schema.org/Person">
 		<div class="card-image">
 		  {% image member.avatar original as avatar %}
-		  <meta itemprop="image" content="{{ avatar.url }}">
+		  <meta itemprop="image" content="{{ avatar.url }}" />
 		  {% include 'partials/image_float.html' with img=member.avatar %}
 		</div>
 		<div class="card-content has-text-centered">

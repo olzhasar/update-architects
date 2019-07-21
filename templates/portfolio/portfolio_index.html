@@ -9,9 +9,9 @@
 	<h1 class="title">Наши проекты</h1>
 	<p class="subtitle">Здесь указаны последние работы в портфолио</p>
       </header>
-      <div class="columns is-multiline" itemscope itemtype="https://schema.org/ItemList https://schema.org/CreativeWork">
+      <div class="columns is-multiline">
 	{% for project in projects.order_by|dictsort:"order" %}
-	<div class="column is-4" itemprop="itemListElement" itemscope itemtype="https://schema.org/CreativeWork">
+	<div class="column is-4" itemscope itemtype="https://schema.org/CreativeWork">
 	  <link itemprop="url" href="{% pageurl project %}">
 	  <meta itemprop="name" content="{{ project.title }}">
 	  {% include 'partials/project_card.html' %}

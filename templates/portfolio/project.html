@@ -64,7 +64,7 @@
 	  {% for project_image in self.images.all %}
 	  <div class="column is-{{ project_image.size }}">
 	    {% image project_image.image original as original %}
-	    <meta itemprop="image" content="{{ original.url }}">
+	    <meta itemprop="image" content="{{ original.url }}" />
 	    {% include 'partials/image_large_float.html' with img=project_image.image %}
 	  </div>
 	  {% endfor %}

@@ -14,11 +14,11 @@
 	      {{ page.body|richtext }}
 	    </div>
 	  </article>
-	  <div class="service-card-list" itemscope itemtype="https://schema.org/ItemList https://schema.org/Service">
+	  <div class="service-card-list">
 	    <div class="columns">
 	      {% for service in services %}
 	      <div class="column">
-		<article class="card service-card" itemprop="itemListElement" itemscope itemtype="https://schema.org/Service">
+		<article class="card service-card" itemscope itemtype="https://schema.org/Service">
 		  <header class="card-header">
 		    <h2 class="card-header-title" itemprop="name">
 		      {{ service.title }}
