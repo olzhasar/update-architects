@@ -83,20 +83,9 @@ class RegularPage(Page):
     subtitle = models.CharField(max_length=255, blank=True, null=True)
     body = RichTextField(null=True, blank=True)
 
-    cover_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+')
-
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body', classname="full"),
-    ]
-
-    promote_panels = Page.promote_panels + [
-        ImageChooserPanel('cover_image'),
     ]
 
     class Meta:
@@ -129,10 +118,8 @@ class ServicesPage(RegularPage):
 
 class ServicePage(RegularPage):
     short_description = models.TextField(blank=True, null=True)
-    icon_name = models.CharField(max_length=100)
 
     promote_panels = RegularPage.promote_panels + [
-        FieldPanel('icon_name'),
         FieldPanel('short_description'),
     ]
 
@@ -229,6 +216,11 @@ class Contacts(RegularPage, AbstractEmailForm):
 
     parent_page_types = ['home.HomePage']
     subpage_types = []
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['social_links'] = SocialLink.objects.all()
+        return context
 
 
 @register_snippet

@@ -6,7 +6,12 @@
   <div class="section">
     <div class="container">
       <div class="columns is-multiline">
-	<div class="column is-5 is-offset-1">
+	<article class="column is-5 is-offset-1" itemscope itemtype="https://schema.org/Organization">
+	  <meta itemprop="name" content="{{ self.get_site.site_name }}">
+	  <link itemprop="url" href="{{ self.get_site.root_url }}">
+	  {% for social_link in social_links %}
+	  <meta itemprop="sameAs" content="{{ social_link.url }}">
+	  {% endfor %}
 	  <h1 class="title is-4">Контактная информация</h1>
 	  <div class="columns is-multiline contacts-columns">
 	    <div class="column is-3">
@@ -17,7 +22,7 @@
 		<span class="icon">
 		  <i class="fas fa-phone"></i>
 		</span>
-		+7 727 328 89 89
+		<span itemprop="telephone">{{ page.phone_number }}</span>
 	      </a>
 	    </div>
 	    <div class="column is-3">
@@ -28,7 +33,9 @@
 		<span class="icon">
 		  <i class="fas fa-envelope"></i>
 		</span>
-		{{ page.email }}
+		<span itemprop="email">
+		  {{ page.email }}
+		</span>
 	      </a>
 	    </div>
 	    <div class="column is-3">
@@ -39,12 +46,13 @@
 		<span class="icon">
 		  <i class="fas fa-map-marker-alt"></i>
 		</span>
-		{{ page.address }}
+		<span itemprop="address">
+		  {{ page.address }}
+		</span>
 	      </p>
 	    </div>
 	  </div>
-
-	</div>
+	</article>
 	<aside class="column is-4 is-offset-1">
 	  <h2 class="title is-4">Написать нам:</h2>
 	  <form id="contact_form" target="{% pageurl page %}" method="POST">

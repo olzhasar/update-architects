@@ -7,9 +7,10 @@
     <div class="container">
       <div class="columns">
 	<div class="column is-8 is-offset-2">
-	  <article>
+	  <article itemscope itemtype="https://schema.org/Service">
 	    {% include 'partials/page_header.html' %}
-	    <div class="content">{{ page.body|richtext }}</div>
+	    <meta itemprop="name" content="{{ page.title }}">
+	    <div class="content" itemprop="description">{{ page.body|richtext }}</div>
 	  </article>
 	  <div class="section has-text-centered">
 	    <a class="button is-dark is-outlined" href="{% slugurl 'services' %}">

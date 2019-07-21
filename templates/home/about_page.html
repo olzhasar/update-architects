@@ -1,28 +1,31 @@
 {% extends 'base.html' %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 <main>
-  <article class="section">
+  <article class="section" itemscope itemtype="https://schema.org/Organization">
     <div class="container">
       <div class="columns">
 	<div class="column is-8 is-offset-2">
+	  <meta itemprop="name" content="{{ request.get_site.site_name }}">
 	  {% include 'partials/page_header.html' %}
-	  <div class="content">
+	  <div class="content" itemprop="description">
 	    {{ page.body | richtext }}
 	  </div>
 	  <div class="columns is-multiline">
 	    {% for member in page.members.all %}
 	    <div class="column is-6">
-	      <div class="card">
+	      <div class="card" itemprop="employee" itemscope itemtype="Person">
 		<div class="card-image">
+		  {% image member.avatar original as avatar %}
+		  <meta itemprop="image" content="{{ avatar.url }}">
 		  {% include 'partials/image_float.html' with img=member.avatar %}
 		</div>
 		<div class="card-content has-text-centered">
-		  <p class="card-title">
+		  <p class="card-title" itemprop="name">
 		    {{ member.name }}
 		  </p>
-		  <p class="card-subtitle">
+		  <p class="card-subtitle" itemprop="jobTitle">
 		    {{ member.job_title }}
 		  </p>
 		</div>

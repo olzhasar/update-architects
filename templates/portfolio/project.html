@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{% load wagtailimages_tags %}
 
 {% block content %}
 <main>
-  <article>
+  <article itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="author" content="{{ self.get_site.site_name }}">
     <div id="project-info" class="section">
       <div class="container">
 
@@ -16,13 +18,13 @@
 	      {% if self.year %}
 	      <tr>
 		<th>Год:</th>
-		<td>{{ self.year }}</td>
+		<td itemprop="copyrightYear">{{ self.year }}</td>
 	      </tr>
 	      {% endif %}
 	      {% if self.location %}
 	      <tr>
 		<th>Расположение:</th>
-		<td>{{ self.location }}</td>
+		<td itemprop="locationCreated">{{ self.location }}</td>
 	      </tr>
 	      {% endif %}
 	      {% if self.area_size %}
@@ -46,7 +48,7 @@
 	    </table>
 	  </div>
 	  <div class="column is-7">
-	    <div class="content">{{ page.left_column|safe }}</div>
+	    <div class="content" itemprop="description">{{ page.left_column|safe }}</div>
 	  </div>
 	</div>
 
@@ -59,6 +61,8 @@
 	<div class="columns is-multiline">
 	  {% for project_image in self.images.all %}
 	  <div class="column is-{{ project_image.size }}">
+	    {% image project_image.image original as original %}
+	    <meta itemprop="image" content="{{ original.url }}">
 	    {% include 'partials/image_large_float.html' with img=project_image.image %}
 	  </div>
 	  {% endfor %}
