@@ -48,7 +48,9 @@
 	    </table>
 	  </div>
 	  <div class="column is-7">
-	    <div class="content" itemprop="description">{{ page.left_column|safe }}</div>
+	    {% if page.description %}
+	    <div class="content" itemprop="description">{{ page.description|safe }}</div>
+	    {% endif %}
 	  </div>
 	</div>
 
