@@ -32,8 +32,7 @@ class HomePage(Page):
              [
                  ('title', blocks.CharBlock()),
                  ('header_text', blocks.CharBlock()),
-                 ('left_column', blocks.RichTextBlock()),
-                 ('right_column', blocks.RichTextBlock()),
+                 ('content', blocks.RichTextBlock()),
              ],
              template='home/blocks/about_block.html'
          )),
