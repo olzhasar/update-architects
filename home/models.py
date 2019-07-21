@@ -55,8 +55,6 @@ class HomePage(Page):
              ],
                                 icon='group'),
              template='home/blocks/customers.html')),
-        ('blog_posts',
-         blocks.StaticBlock(template='home/blocks/blog_posts.html')),
     ])
 
     content_panels = Page.content_panels + [
