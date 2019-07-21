@@ -7,7 +7,7 @@
     <div class="container">
       <div class="columns">
 	<div class="column is-8 is-offset-2">
-	  <meta itemprop="name" content="{{ request.get_site.site_name }}">
+	  <meta itemprop="name" content="{{ self.get_site.site_name }}">
 	  {% include 'partials/page_header.html' %}
 	  <div class="content" itemprop="description">
 	    {{ page.body | richtext }}
