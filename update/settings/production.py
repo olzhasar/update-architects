@@ -1,5 +1,5 @@
+import os
 from .base import *
-from .secret_settings import *
 
 DEBUG = False
 
@@ -19,9 +19,9 @@ STATIC_ROOT = '/var/www/static'
 MEDIA_ROOT = '/var/www/media'
 
 COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True
-COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSCompressorFilter']
-COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.SlimItFilter']
+COMPRESS_OFFLINE = False
+#COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSCompressorFilter']
+#COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.SlimItFilter']
 
 WAGTAILIMAGES_JPEG_QUALITY = 80
 
@@ -33,11 +33,11 @@ WAGTAIL_ENABLE_UPDATE_CHECK = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'update',
-        'USER': 'update_user',
-        'PASSWORD': 'aA14469425',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': OS.getenv('DB_PORT', ''),
     }
 }
 
@@ -51,6 +51,8 @@ CACHES = {
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 try:
     from .local import *
