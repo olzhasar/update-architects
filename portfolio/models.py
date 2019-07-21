@@ -52,8 +52,6 @@ class Project(Page):
     status = models.CharField(max_length=255, blank=True, null=True)
 
     description = RichTextField(blank=True, null=True)
-    left_column = RichTextField(blank=True, null=True)
-    right_column = RichTextField(blank=True, null=True)
 
     body = None
 
@@ -69,13 +67,6 @@ class Project(Page):
                 FieldPanel('status'),
             ],
             heading='Project details'
-        ),
-        MultiFieldPanel(
-            [
-                FieldPanel('left_column'),
-                FieldPanel('right_column'),
-            ],
-            heading='Project description'
         ),
         FieldPanel('description'),
         InlinePanel('images', label='Project images'),
