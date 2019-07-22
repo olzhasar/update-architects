@@ -1,38 +1,29 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags wagtailimages_tags static %}
 
+{% block nav %}{% endblock %}
+
 {% block content %}
-<section class="home-section bg-dark-alfa-50 parallax-2" data-background="{% static 'images/background.jpg' %}">
-    <div class="js-height-full">
-
-        <!-- Hero Content -->
-        <div class="home-content container">
-            <div class="home-text">
-                <div class="hs-cont">
-
-                    <!-- Headings -->
-                    <div class="hs-wrap">
-
-                      <div class="hs-line-13 font-alt mb-10">
-                          404
-                      </div>
-
-                      <div class="hs-line-4 font-alt mb-40">
-                          Запрашиваемая Вами страница не найдена.
-                      </div>
-
-                      <div class="local-scroll">
-                          <a href="/" class="btn btn-mod btn-w btn-round btn-small"><i class="fa fa-angle-left"></i> Перейти на Главную</a>
-                      </div>
-
-                    </div>
-                    <!-- End Headings -->
-
-                </div>
-            </div>
-        </div>
-        <!-- End Hero Content -->
-
+<div class="hero is-light is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8">
+	  <figure class="image">
+	    <img src="{% static 'images/ostrich.png' %}" alt="This page is buried in the sand">
+	  </figure>
+	</div>
+        <div class="column is-4">
+	  <h1 class="title">404</h1>
+	  <p class="subtitle">
+	    Мы не можем найти Запрашиваемую Вами страницу. Возможно оно просто спряталась как этот страус. Предлагаем Вам взамен посмотреть наши другие страницы:
+	  </p>
+	  <a class="button is-dark is-outlined" href="{{ request.site.root_url }}">Перейти на главную</a>
+	</div>
+      </div>
     </div>
-</section>
+  </div>
+</div>
 {% endblock content %}
+
+{% block footer %}{% endblock %}
