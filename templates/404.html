@@ -8,17 +8,21 @@
   <div class="hero-body">
     <div class="container">
       <div class="columns">
-        <div class="column is-8">
-	  <figure class="image">
-	    <img src="{% static 'images/ostrich.png' %}" alt="This page is buried in the sand">
-	  </figure>
-	</div>
-        <div class="column is-4">
-	  <h1 class="title">404</h1>
-	  <p class="subtitle">
-	    Мы не можем найти Запрашиваемую Вами страницу. Возможно оно просто спряталась как этот страус. Предлагаем Вам взамен посмотреть наши другие страницы:
-	  </p>
-	  <a class="button is-dark is-outlined" href="{{ request.site.root_url }}">Перейти на главную</a>
+	<div class="column is-8 is-offset-2">
+	  <div class="columns">
+	    <div class="column is-6">
+	      <figure class="image">
+		<img src="{% static 'images/ostrich.png' %}" alt="This page is buried in the sand">
+	      </figure>
+	    </div>
+	    <div class="column is-6">
+	      <h1 class="title is-1">404</h1>
+	      <p class="subtitle">
+		Мы не можем найти Запрашиваемую Вами страницу. Возможно оно просто спряталась как этот страус. Предлагаем Вам взамен посмотреть наши другие страницы:
+	      </p>
+	      <a class="button is-dark is-outlined" href="{{ request.site.root_url }}">Перейти на главную</a>
+	    </div>
+	  </div>
 	</div>
       </div>
     </div>
