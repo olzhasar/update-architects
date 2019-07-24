@@ -36,13 +36,13 @@
 	      {% if self.authors %}
 	      <tr>
 		<th>Авторы:</th>
-		<td>А. Турган, А. Байменов, А. Жунисбаева</td>
+		<td>{{ self.authors }}</td>
 	      </tr>
 	      {% endif %}
 	      {% if self.status %}
 	      <tr>
 		<th>Статус реализации:</th>
-		<td>В процессе реализации</td>
+		<td>{{ self.status }}</td>
 	      </tr>
 	      {% endif %}
 	    </table>
