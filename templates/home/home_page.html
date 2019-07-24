@@ -5,6 +5,16 @@
 
 {% block extra_head %}
 <meta name="google-site-verification" content="NM0IPvP4QDlVpg00kGeCm-wQMPmUrplq7SBsxhCek-M" />
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "{{ self.get_site.root_url }}",
+    "name": "{{ self.get_site.site_name }}",
+    "description": "{{ self.search_description }}",
+}
+</script>
+
 {% endblock %}
 
 {% block nav %}{% endblock %}
