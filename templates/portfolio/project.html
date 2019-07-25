@@ -64,7 +64,12 @@
 	  {% for project_image in self.images.all %}
 	  <div class="column is-{{ project_image.size }}">
 	    {% image project_image.image original as original %}
-	    <meta itemprop="image" content="{{ original.url }}" />
+	    <div itemprop="{% if forloop.first %}image{% else %}associatedMedia{% endif %}" itemscope itemtype="https://schema.org/ImageObject">
+	      <meta itemprop="contentUrl" content="{{ original.url }}" />
+	      <meta itemprop="height" content="{{ original.height }}" />
+	      <meta itemprop="width" content="{{ original.width }}" />
+	      <meta itemprop="caption" content="{{ original.alt }}" />
+	    </div>
 	    {% include 'partials/image_large_float.html' with img=project_image.image %}
 	  </div>
 	  {% endfor %}
