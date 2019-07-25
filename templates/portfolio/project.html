@@ -4,7 +4,9 @@
 {% block content %}
 <main>
   <article itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="author" content="{{ self.get_site.site_name }}">
+    <div itemprop="author" itemscope itemtype="https://schema.org/Organization">
+      <meta itemprop="name" content="{{ self.get_site.site_name }}">
+    </div>
     <div id="project-info" class="section">
       <div class="container">
 
