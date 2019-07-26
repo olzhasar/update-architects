@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 <main>
   <article itemscope itemtype="https://schema.org/CreativeWork">
     <div itemprop="author" itemscope itemtype="https://schema.org/Organization">
-      <meta itemprop="name" content="{{ self.get_site.site_name }}">
+      <meta itemprop="name" content="{{ self.get_site.site_name }}" />
     </div>
+    <link itemprop="url" href="{% pageurl page %}">
+    <meta itemprop="about" content="{{ page.subtitle }}" />
     <div id="project-info" class="section">
       <div class="container">
 

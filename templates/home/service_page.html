@@ -10,6 +10,7 @@
 	  <article itemscope itemtype="https://schema.org/Service">
 	    {% include 'partials/page_header.html' %}
 	    <meta itemprop="name" content="{{ page.title }}">
+	    <link itemprop="url" href="{% pageurl page %}">
 	    <div itemprop="provider" itemscope itemtype="https://schema.org/Organization">
 	      <meta itemprop="name" content="{{ self.get_site.site_name }}">
 	    </div>
