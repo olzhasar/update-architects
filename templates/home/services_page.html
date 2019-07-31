@@ -18,17 +18,16 @@
 	    <div class="columns">
 	      {% for service in services %}
 	      <div class="column">
-		<article class="card service-card" itemscope itemtype="https://schema.org/Service">
+		<article class="card service-card">
 		  <header class="card-header">
-		    <h2 class="card-header-title" itemprop="name">
+		    <h2 class="card-header-title">
 		      {{ service.title }}
 		    </h2>
 		  </header>
-		  <div class="card-content" itemprop="slogan">
+		  <div class="card-content">
 		    {{ service.short_description }}
 		  </div>
 		  <footer class="card-footer">
-		    <link itemprop="url" href="{% pageurl service %}">
 		    <a href="{% pageurl service %}" class="button is-light is-fullwidth">
 		      <span>Подробнее</span>
 		      <span class="icon"><i class="fas fa-arrow-right"></i></span>
