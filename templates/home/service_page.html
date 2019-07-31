@@ -20,7 +20,7 @@
 	    <div itemprop="provider" itemscope itemtype="https://schema.org/Organization">
 	      <meta itemprop="name" content="{{ self.get_site.site_name }}">
 	    </div>
-	    <div class="content" itemprop="description">{{ page.body|richtext }}</div>
+	    <div class="content">{{ page.body|richtext }}</div>
 	  </article>
 	  <div class="section has-text-centered">
 	    <a class="button is-dark is-outlined" href="{% slugurl 'services' %}">
