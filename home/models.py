@@ -117,9 +117,11 @@ class ServicesPage(RegularPage):
 
 class ServicePage(RegularPage):
     short_description = models.TextField(blank=True, null=True)
+    wiki_url = models.URLField(blank=True, null=True)
 
     promote_panels = RegularPage.promote_panels + [
         FieldPanel('short_description'),
+        FieldPanel('wiki_url'),
     ]
 
     parent_page_types = ['home.ServicesPage']
