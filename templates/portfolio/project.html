@@ -8,13 +8,13 @@
       <meta itemprop="name" content="{{ self.get_site.site_name }}" />
     </div>
     <link itemprop="url" href="{% pageurl page %}">
-    <meta itemprop="about" content="{{ page.subtitle }}" />
+    <meta itemprop="headline" content="{{ page.subtitle }}" />
     <div id="project-info" class="section">
       <div class="container">
 
 	<div class="columns">
 	  <div class="column is-5">
-	    <h1 class="title">
+	    <h1 class="title" itemprop="name">
 	      {{ page.title }}
 	    </h1>
 
