@@ -11,9 +11,15 @@
 	    {% include 'partials/page_header.html' %}
 	    <meta itemprop="name" content="{{ page.title }}">
 	    <meta itemprop="serviceType" content="{{ page.subtitle }}">
-	    <meta itemprop="areaServed" content="Алматы">
-	    <meta itemprop="areaServed" content="Астана">
-	    <meta itemprop="areaServed" content="Казахстан">
+	    <div itemprop="areaServed" itemscope itemtype="https://schema.org/City">
+	      <meta itemprop="name" content="Алматы">
+	    </div>
+	    <div itemprop="areaServed" itemscope itemtype="https://schema.org/City">
+	      <meta itemprop="name" content="Астана">
+	    </div>
+	    <div itemprop="areaServed" itemscope itemtype="https://schema.org/Country">
+	      <meta itemprop="name" content="Казахстан">
+	    </div>
 	    <meta itemprop="additionalType" content="{{ self.wiki_url }}">
 	    <meta itemprop="description" content="{{ page.short_description }}">
 	    <link itemprop="url" href="{% pageurl page %}">
