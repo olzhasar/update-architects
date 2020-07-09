@@ -29,7 +29,7 @@ six==1.11.0
 slimit==0.8.1
 Unidecode==0.4.21
 urllib3==1.22
-wagtail==2.0.2
+wagtail==2.7.2
 wagtailmenus==3.0
 webencodings==0.5.1
 Willow==1.1
