@@ -11,5 +11,8 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        script: sudo docker-compose -f /srv/update-architects/docker-compose-prod.yml up -d --build --no-deps
+        key: ${{ secrets.KEY }}
+        script: |
+          cd /srv/update-architects
+          git pull
+          sudo docker-compose -f docker-compose-prod.yml up -d --build --no-deps
