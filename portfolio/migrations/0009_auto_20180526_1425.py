@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('portfolio', '0008_auto_20180526_1422'),
+        ("portfolio", "0008_auto_20180526_1422"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='project',
-            name='date',
+            model_name="project",
+            name="date",
         ),
         migrations.AddField(
-            model_name='project',
-            name='year',
+            model_name="project",
+            name="year",
             field=models.IntegerField(blank=True, null=True),
         ),
     ]

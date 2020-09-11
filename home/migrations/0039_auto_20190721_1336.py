@@ -6,32 +6,32 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0038_remove_servicepage_icon_name'),
+        ("home", "0038_remove_servicepage_icon_name"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='aboutpage',
-            name='cover_image',
+            model_name="aboutpage",
+            name="cover_image",
         ),
         migrations.RemoveField(
-            model_name='contacts',
-            name='cover_image',
+            model_name="contacts",
+            name="cover_image",
         ),
         migrations.RemoveField(
-            model_name='jobpostings',
-            name='cover_image',
+            model_name="jobpostings",
+            name="cover_image",
         ),
         migrations.RemoveField(
-            model_name='servicepage',
-            name='cover_image',
+            model_name="servicepage",
+            name="cover_image",
         ),
         migrations.RemoveField(
-            model_name='servicespage',
-            name='cover_image',
+            model_name="servicespage",
+            name="cover_image",
         ),
         migrations.RemoveField(
-            model_name='standardpage',
-            name='cover_image',
+            model_name="standardpage",
+            name="cover_image",
         ),
     ]

@@ -6,16 +6,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('portfolio', '0015_remove_portfolioindex_cover_image'),
+        ("portfolio", "0015_remove_portfolioindex_cover_image"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='project',
-            name='left_column',
+            model_name="project",
+            name="left_column",
         ),
         migrations.RemoveField(
-            model_name='project',
-            name='right_column',
+            model_name="project",
+            name="right_column",
         ),
     ]

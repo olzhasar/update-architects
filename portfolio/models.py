@@ -1,40 +1,38 @@
 from django.db import models
-
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
-
-from wagtail.core.models import Page, Orderable
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import (FieldPanel, MultiFieldPanel,
-                                         InlinePanel)
+from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from home.models import RegularPage
 
 
 class PortfolioIndex(RegularPage):
-    parent_page_types = ['home.HomePage']
-    subpage_types = ['portfolio.Project']
+    parent_page_types = ["home.HomePage"]
+    subpage_types = ["portfolio.Project"]
 
     content_panels = RegularPage.content_panels + [
-        InlinePanel('categories', label='Project Categories')
+        InlinePanel("categories", label="Project Categories")
     ]
 
     def get_context(self, request):
         context = super().get_context(request)
 
-        context['projects'] = Project.objects.live()
+        context["projects"] = Project.objects.live()
         return context
 
 
 class ProjectCategory(Orderable):
-    page = ParentalKey(PortfolioIndex, on_delete=models.CASCADE,
-                       related_name='categories')
+    page = ParentalKey(
+        PortfolioIndex, on_delete=models.CASCADE, related_name="categories"
+    )
     name = models.CharField(max_length=255, unique=True)
     code = models.CharField(max_length=100, unique=True)
 
     panels = [
-        FieldPanel('name'),
-        FieldPanel('code'),
+        FieldPanel("name"),
+        FieldPanel("code"),
     ]
 
     def __str__(self):
@@ -56,58 +54,54 @@ class Project(Page):
     body = None
 
     content_panels = Page.content_panels + [
-        FieldPanel('subtitle'),
-        FieldPanel('categories'),
+        FieldPanel("subtitle"),
+        FieldPanel("categories"),
         MultiFieldPanel(
             [
-                FieldPanel('year'),
-                FieldPanel('location'),
-                FieldPanel('area_size'),
-                FieldPanel('authors'),
-                FieldPanel('status'),
+                FieldPanel("year"),
+                FieldPanel("location"),
+                FieldPanel("area_size"),
+                FieldPanel("authors"),
+                FieldPanel("status"),
             ],
-            heading='Project details'
+            heading="Project details",
         ),
-        FieldPanel('description'),
-        InlinePanel('images', label='Project images'),
+        FieldPanel("description"),
+        InlinePanel("images", label="Project images"),
     ]
 
     promote_panels = Page.promote_panels + [
-	FieldPanel('order'),
+        FieldPanel("order"),
     ]
 
-    parent_page_types = ['portfolio.PortfolioIndex']
+    parent_page_types = ["portfolio.PortfolioIndex"]
     subpage_types = []
 
     def get_sitemap_urls(self):
         return [
             {
-                'location': self.full_url,
-                'lastmod': self.latest_revision_created_at,
-                'changefreq': 'weekly',
-                'priority': 0.64
+                "location": self.full_url,
+                "lastmod": self.latest_revision_created_at,
+                "changefreq": "weekly",
+                "priority": 0.64,
             }
         ]
 
 
 class ProjectImage(Orderable):
-    page = ParentalKey(Project, on_delete=models.CASCADE,
-                       related_name='images')
+    page = ParentalKey(Project, on_delete=models.CASCADE, related_name="images")
     image = models.ForeignKey(
-        'wagtailimages.Image',
+        "wagtailimages.Image",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
     SIZES = (
-        (12, 'Full width'),
-        (6, 'Half'),
-        (4, 'One-third'),
+        (12, "Full width"),
+        (6, "Half"),
+        (4, "One-third"),
     )
     size = models.PositiveSmallIntegerField(choices=SIZES, default=12)
 
-    panels = [
-        ImageChooserPanel('image'),
-        FieldPanel('size')
-    ]
+    panels = [ImageChooserPanel("image"), FieldPanel("size")]

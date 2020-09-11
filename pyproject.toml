@@ -15,7 +15,6 @@ exclude = '''
     | buck-out
     | build
     | dist
-    | migrations
   )/
   | foo.py           # also separately exclude a file named foo.py in
                      # the root of the project
@@ -23,7 +22,4 @@ exclude = '''
 '''
 
 [tool.isort]
-multi_line_output = 3
 line_length = 88
-include_trailing_comma = true
-skip_glob = [*/migrations/*.py]

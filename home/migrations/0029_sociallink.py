@@ -6,17 +6,25 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0028_auto_20181103_1846'),
+        ("home", "0028_auto_20181103_1846"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='SocialLink',
+            name="SocialLink",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=128)),
-                ('icon', models.CharField(max_length=256)),
-                ('url', models.URLField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=128)),
+                ("icon", models.CharField(max_length=256)),
+                ("url", models.URLField()),
             ],
         ),
     ]

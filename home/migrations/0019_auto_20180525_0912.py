@@ -6,33 +6,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0018_auto_20180525_0907'),
+        ("home", "0018_auto_20180525_0907"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='contacts',
-            name='address',
+            model_name="contacts",
+            name="address",
             field=models.CharField(blank=True, max_length=255, null=True),
         ),
         migrations.AddField(
-            model_name='contacts',
-            name='email',
+            model_name="contacts",
+            name="email",
             field=models.EmailField(blank=True, max_length=254, null=True),
         ),
         migrations.AddField(
-            model_name='contacts',
-            name='latitude',
+            model_name="contacts",
+            name="latitude",
             field=models.FloatField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='contacts',
-            name='longitude',
+            model_name="contacts",
+            name="longitude",
             field=models.FloatField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='contacts',
-            name='phone_number',
+            model_name="contacts",
+            name="phone_number",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
     ]

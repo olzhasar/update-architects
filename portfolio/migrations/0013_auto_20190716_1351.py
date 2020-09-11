@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('portfolio', '0012_projectimage_size'),
+        ("portfolio", "0012_projectimage_size"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='projectimage',
-            name='size',
-            field=models.PositiveSmallIntegerField(choices=[(12, 'Full width'), (6, 'Half'), (4, 'One-third')], default=12),
+            model_name="projectimage",
+            name="size",
+            field=models.PositiveSmallIntegerField(
+                choices=[(12, "Full width"), (6, "Half"), (4, "One-third")], default=12
+            ),
         ),
     ]
