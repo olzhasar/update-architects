@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -66,6 +67,10 @@ DATABASES = {
         "HOST": os.getenv("DB_HOST", "localhost"),
         "PORT": os.getenv("DB_PORT", "5432"),
     }
+}
+
+CACHES = {
+    "default": {"BACKEND": "django_redis.cache.RedisCache", "LOCATION": "redis:6379"}
 }
 
 TEMPLATES = [
