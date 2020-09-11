@@ -12,5 +12,4 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: whoami
+        script: sudo docker-compose -f /srv/update-architects/docker-compose-prod.yml up -d --build --no-deps
