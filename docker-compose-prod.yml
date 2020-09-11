@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: uwsgi --ini /app/update/uwsgi.ini
+    volumes:
+      - /tmp/uwsgi/:/tmp/uwsgi
+    network_mode: "host"
+    env_file: .env
+    depends_on:
+      - redis
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
