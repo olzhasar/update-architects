@@ -6,6 +6,8 @@ services:
     command: uwsgi --ini /app/update/uwsgi.ini
     volumes:
       - /tmp/uwsgi/:/tmp/uwsgi
+      - /var/www/static:/static
+      - /var/www/media:/media
     network_mode: "host"
     env_file: .env
     depends_on:
