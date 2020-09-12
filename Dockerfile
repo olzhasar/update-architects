@@ -1,5 +1,7 @@
 FROM python:3.8
 
+RUN apt-get update && apt-get install -y gettext
+
 COPY ./requirements/base.txt ./requirements/prod.txt /requirements/
 RUN pip install --upgrade pip && pip install -r /requirements/prod.txt
 
