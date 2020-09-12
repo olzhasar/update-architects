@@ -9,7 +9,7 @@ from core.mixins import TranslatedMixin, TranslatedPageMixin
 from home.models import RegularPage
 
 
-class PortfolioIndex(RegularPage):
+class PortfolioIndex(TranslatedMixin, RegularPage):
     parent_page_types = ["home.HomePage"]
     subpage_types = ["portfolio.Project"]
 
