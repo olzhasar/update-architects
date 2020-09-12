@@ -9,8 +9,8 @@
 	<div class="column is-8 is-offset-2">
 	  <article itemscope itemtype="https://schema.org/Service">
 	    {% include 'partials/page_header.html' %}
-	    <meta itemprop="name" content="{{ page.title }}">
-	    <meta itemprop="serviceType" content="{{ page.subtitle }}">
+	    <meta itemprop="name" content="{{ page.translated.title }}">
+	    <meta itemprop="serviceType" content="{{ page.translated.subtitle }}">
 	    <div itemprop="areaServed" itemscope itemtype="https://schema.org/City">
 	      <meta itemprop="name" content="Алматы">
 	    </div>
@@ -21,12 +21,12 @@
 	      <meta itemprop="name" content="Казахстан">
 	    </div>
 	    <meta itemprop="additionalType" content="{{ self.wiki_url }}">
-	    <meta itemprop="description" content="{{ page.short_description }}">
+	    <meta itemprop="description" content="{{ page.translated.short_description }}">
 	    <link itemprop="url" href="{% pageurl page %}">
 	    <div itemprop="provider" itemscope itemtype="https://schema.org/Organization">
 	      <meta itemprop="name" content="{{ self.get_site.site_name }}">
 	    </div>
-	    <div class="content">{{ page.body|richtext }}</div>
+	    <div class="content">{{ page.translated.body|richtext }}</div>
 	  </article>
 	  <div class="section has-text-centered">
 	    <a class="button is-dark is-outlined" href="{% slugurl 'services' %}">

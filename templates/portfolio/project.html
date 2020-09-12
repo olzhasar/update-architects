@@ -8,14 +8,14 @@
       <meta itemprop="name" content="{{ self.get_site.site_name }}" />
     </div>
     <link itemprop="url" href="{% pageurl page %}">
-    <meta itemprop="headline" content="{{ page.subtitle }}" />
+    <meta itemprop="headline" content="{{ page.translated.subtitle }}" />
     <div id="project-info" class="section">
       <div class="container">
 
 	<div class="columns">
 	  <div class="column is-5">
 	    <h1 class="title" itemprop="name">
-	      {{ page.title }}
+	      {{ page.translated.title }}
 	    </h1>
 
 	    <table class="table">
@@ -25,7 +25,7 @@
 		<td itemprop="copyrightYear">{{ self.year }}</td>
 	      </tr>
 	      {% endif %}
-	      {% if self.location %}
+	      {% if self.translated.location %}
 	      <tr>
 		<th>Расположение:</th>
 		<td itemprop="locationCreated">{{ self.location }}</td>
@@ -37,23 +37,23 @@
 		<td>{{ self.area_size }}</td>
 	      </tr>
 	      {% endif %}
-	      {% if self.authors %}
+	      {% if self.translated.authors %}
 	      <tr>
 		<th>Авторы:</th>
 		<td>{{ self.authors }}</td>
 	      </tr>
 	      {% endif %}
-	      {% if self.status %}
+	      {% if self.translated.status %}
 	      <tr>
 		<th>Статус реализации:</th>
-		<td>{{ self.status }}</td>
+		<td>{{ self.translated.status }}</td>
 	      </tr>
 	      {% endif %}
 	    </table>
 	  </div>
 	  <div class="column is-7">
-	    {% if page.description %}
-	    <div class="content" itemprop="description">{{ page.description|safe }}</div>
+	    {% if page.translated.description %}
+	    <div class="content" itemprop="description">{{ page.translated.description|safe }}</div>
 	    {% endif %}
 	  </div>
 	</div>

@@ -3,32 +3,32 @@
 
 {% block content %}
 <section class="home-section bg-dark-alfa-50 parallax-2" data-background="{% static 'images/background.jpg' %}">
-    <div class="js-height-full">
+  <div class="js-height-full">
 
-        <!-- Hero Content -->
-        <div class="home-content container">
-            <div class="home-text">
-                <div class="hs-cont">
+    <!-- Hero Content -->
+    <div class="home-content container">
+      <div class="home-text">
+	<div class="hs-cont">
 
-                    <!-- Headings -->
-                    <div class="hs-wrap">
+	  <!-- Headings -->
+	  <div class="hs-wrap">
 
-                        <div class="hs-line-4 font-alt mb-40">
-                            {{ page.form_success_text|richtext }}
-                        </div>
+	    <div class="hs-line-4 font-alt mb-40">
+	      {{ page.translated.form_success_text|richtext }}
+	    </div>
 
-                        <div class="local-scroll">
-                            <a href="/" class="btn btn-mod btn-w btn-round btn-small"><i class="fa fa-angle-left"></i> Вернуться на главную</a>
-                        </div>
+	    <div class="local-scroll">
+	      <a href="/" class="btn btn-mod btn-w btn-round btn-small"><i class="fa fa-angle-left"></i> Вернуться на главную</a>
+	    </div>
 
-                    </div>
-                    <!-- End Headings -->
+	  </div>
+	  <!-- End Headings -->
 
-                </div>
-            </div>
-        </div>
-        <!-- End Hero Content -->
-
+	</div>
+      </div>
     </div>
+    <!-- End Hero Content -->
+
+  </div>
 </section>
 {% endblock content %}

@@ -8,10 +8,10 @@
     <meta name="yandex-verification" content="dbf5a470212740ea" />
     <title>
       {% block title %}
-      {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+      {% if self.translated.seo_title %}{{ self.translated.seo_title }}{% else %}{{ self.translated.title }}{% endif %}
       {% endblock %}
     </title>
-    <meta name="description" content="{% block meta_description %}{{ self.search_description }}{% endblock %}" />
+    <meta name="description" content="{% block meta_description %}{{ self.translated.search_description }}{% endblock %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% block extra_head %}{% endblock %}
 

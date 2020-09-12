@@ -10,7 +10,7 @@
 	  <meta itemprop="name" content="{{ self.get_site.site_name }}">
 	  {% include 'partials/page_header.html' %}
 	  <div class="content" itemprop="description">
-	    {{ page.body | richtext }}
+	    {{ page.translated.body | richtext }}
 	  </div>
 	  <div class="columns is-multiline">
 	    {% for member in page.members.all %}
@@ -23,10 +23,10 @@
 		</div>
 		<div class="card-content has-text-centered">
 		  <p class="card-title" itemprop="name">
-		    {{ member.name }}
+		    {{ member.translated.name }}
 		  </p>
 		  <p class="card-subtitle" itemprop="jobTitle">
-		    {{ member.job_title }}
+		    {{ member.translated.job_title }}
 		  </p>
 		</div>
 	      </div>

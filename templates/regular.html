@@ -11,9 +11,9 @@
 
             <div class="col-md-7">
                 <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">{% block breadcrumb_title %}{{ page.title }}{% endblock %}</h1>
-                {% if page.subtitle %}
+                {% if page.translated.subtitle %}
                 <div class="hs-line-4 font-alt {% if not page.cover_image %}black{% endif %}">
-                    {{ page.subtitle }}
+                    {{ page.translated.subtitle }}
                 </div>
                 {% endif %}
             </div>
@@ -22,7 +22,7 @@
                 <div class="mod-breadcrumbs font-alt align-right">
                     {% for parent in self.get_ancestors %}
                       {% if not parent.is_root %}
-                        <a href={% pageurl parent %}>{{ parent.title }}</a>&nbsp;/&nbsp;
+                        <a href={% pageurl parent %}>{{ parent.translated.title }}</a>&nbsp;/&nbsp;
                       {% endif %}
                     {% endfor %}
                     <span>{{ page.title }}</span>
@@ -39,7 +39,7 @@
     <div class="container relative">
       <div class="row">
 	<div class="col-md-12">
-         {{ page.body|richtext }}
+         {{ page.translated.body|richtext }}
 	</div>
       </div>
     </div>

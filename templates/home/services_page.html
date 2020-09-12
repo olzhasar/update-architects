@@ -10,7 +10,7 @@
 	<div class="column is-8 is-offset-2">
 	  <article>
 	    {% include 'partials/page_header.html' %}
-	    <meta itemprop="serviceType" content="{{ page.subtitle }}">
+	    <meta itemprop="serviceType" content="{{ page.translated.subtitle }}">
 	    <div itemprop="provider" itemscope itemtype="https://schema.org/Organization">
 	      <meta itemprop="name" content="{{ self.get_site.site_name }}">
 	    </div>
@@ -24,7 +24,7 @@
 	      <meta itemprop="name" content="Казахстан">
 	    </div>
 	    <div class="content" itemprop="description">
-	      {{ page.body|richtext }}
+	      {{ page.translated.body|richtext }}
 	    </div>
 	  </article>
 	  <div class="service-card-list" itemprop="hasOfferCatalog" itemscope itemtype="https://schema.org/OfferCatalog">
@@ -34,12 +34,12 @@
 		<article class="card service-card" itemprop="itemOffered" itemscope itemtype="https://schema.org/Service">
 		  <header class="card-header">
 		    <h2 class="card-header-title" itemprop="name">
-		      {{ service.title }}
+		      {{ service.translated.title }}
 		    </h2>
 		  </header>
 		  <link itemprop="url" href="{% pageurl service %}">
 		  <div class="card-content">
-		    {{ service.short_description }}
+		    {{ service.translated.short_description }}
 		  </div>
 		  <footer class="card-footer">
 		    <a href="{% pageurl service %}" class="button is-light is-fullwidth">

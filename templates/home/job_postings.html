@@ -8,7 +8,7 @@
       <div class="columns">
 	<div class="column is-6 is-offset-3">
 	  {% include 'partials/page_header.html' %}
-	  <div class="content">{{ page.body|richtext }}</div>
+	  <div class="content">{{ page.translated.body|richtext }}</div>
 	</div>
       </div>
     </div>
@@ -24,8 +24,8 @@
 	  {% if postings %}
 	  {% for posting in postings %}
 	  <article class="block">
-	    <h3 class="title is-6">{{ posting.job_title }}</h3>
-	    <div class="content">{{ posting.description|richtext }}</div>
+	    <h3 class="title is-6">{{ posting.translated.job_title }}</h3>
+	    <div class="content">{{ posting.translated.description|richtext }}</div>
 	  </article>
 	  <hr>
 	  {% endfor %}
