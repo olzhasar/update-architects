@@ -16,8 +16,10 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
+from core.mixins import TranslatedMixin, TranslatedPageMixin
 
-class HomePage(Page):
+
+class HomePage(TranslatedPageMixin, Page):
 
     body_ru = StreamField(
         [
@@ -75,7 +77,7 @@ class HomePage(Page):
         ]
     )
 
-    content_panels = Page.content_panels + [
+    content_panels = TranslatedPageMixin.content_panels + [
         StreamFieldPanel("body_ru"),
     ]
 
@@ -95,13 +97,13 @@ class HomePage(Page):
         ]
 
 
-class RegularPage(Page):
+class RegularPage(TranslatedPageMixin, Page):
     is_abstract = True
 
     subtitle_ru = models.CharField(max_length=255, blank=True, null=True)
     body_ru = RichTextField(null=True, blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = TranslatedPageMixin.content_panels + [
         FieldPanel("subtitle_ru"),
         FieldPanel("body_ru", classname="full"),
     ]
@@ -155,7 +157,7 @@ class AboutPage(RegularPage):
     ]
 
 
-class TeamMember(Orderable):
+class TeamMember(TranslatedMixin, Orderable):
     page = ParentalKey(AboutPage, on_delete=models.CASCADE, related_name="members")
     name_ru = models.CharField(max_length=255)
     job_title_ru = models.CharField(max_length=255)
@@ -183,7 +185,7 @@ class JobPostings(RegularPage):
     subpage_types = []
 
 
-class JobPosting(Orderable):
+class JobPosting(TranslatedMixin, Orderable):
     page = ParentalKey(JobPostings, on_delete=models.CASCADE, related_name="postings")
     job_title_ru = models.CharField(max_length=255)
     description_ru = RichTextField()
@@ -247,7 +249,7 @@ class Contacts(RegularPage, AbstractEmailForm):
 
 
 @register_snippet
-class SocialLink(models.Model):
+class SocialLink(TranslatedMixin, models.Model):
     title_ru = models.CharField(max_length=128)
     icon = models.CharField(max_length=256)
     url = models.URLField()

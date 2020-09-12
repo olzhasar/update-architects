@@ -5,6 +5,7 @@ from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from core.mixins import TranslatedMixin
 from home.models import RegularPage
 
 
@@ -23,7 +24,7 @@ class PortfolioIndex(RegularPage):
         return context
 
 
-class ProjectCategory(Orderable):
+class ProjectCategory(TranslatedMixin, Orderable):
     page = ParentalKey(
         PortfolioIndex, on_delete=models.CASCADE, related_name="categories"
     )
