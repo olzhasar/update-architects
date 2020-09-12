@@ -18,5 +18,6 @@ WORKDIR /app
 COPY . /app
 
 RUN python manage.py collectstatic --noinput
+RUN python manage.py compilemessages
 
 CMD ["/docker-entrypoint.sh"]
