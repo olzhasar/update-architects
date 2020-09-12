@@ -28,7 +28,7 @@
 	      {% if self.translated.location %}
 	      <tr>
 		<th>Расположение:</th>
-		<td itemprop="locationCreated">{{ self.location }}</td>
+		<td itemprop="locationCreated">{{ self.translated.location }}</td>
 	      </tr>
 	      {% endif %}
 	      {% if self.area_size %}
@@ -40,7 +40,7 @@
 	      {% if self.translated.authors %}
 	      <tr>
 		<th>Авторы:</th>
-		<td>{{ self.authors }}</td>
+		<td>{{ self.translated.authors }}</td>
 	      </tr>
 	      {% endif %}
 	      {% if self.translated.status %}

@@ -7,14 +7,16 @@
   <div class="section projects">
     <div class="container">
       <header class="header">
-	<h1 class="title">Наши проекты</h1>
-	<p class="subtitle">Здесь указаны последние работы в портфолио</p>
+	<h1 class="title">{{ page.translated.title }}</h1>
+	{% if page.translated.subtitle %}
+	<p class="subtitle">{{ page.translated.subtitle }}</p>
+	{% endif %}
       </header>
       <div class="columns is-multiline">
 	{% for project in projects.order_by|dictsort:"order" %}
 	<div class="column is-4" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
 	  <link itemprop="url" href="{% pageurl project %}">
-	  <meta itemprop="name" content="{{ project.title }}">
+	  <meta itemprop="name" content="{{ project.translated.title }}">
 	  {% include 'partials/project_card.html' %}
 	</div>
 	{% endfor %}

@@ -14,9 +14,9 @@ class TranslationDescriptor:
             val = getattr(self.instance, translated_field)
             if val:
                 return val
-            untranslated_field = f"{field_name}_{self.default_suffix}"
-            if hasattr(self.instance, untranslated_field):
-                return getattr(self.instance, untranslated_field)
+        untranslated_field = f"{field_name}_{self.default_suffix}"
+        if hasattr(self.instance, untranslated_field):
+            return getattr(self.instance, untranslated_field)
         return getattr(self.instance, field_name)
 
     def __str__(self):

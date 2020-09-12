@@ -37,6 +37,7 @@ class TranslatedPageMixin(models.Model):
         FieldPanel("seo_title_en"),
         FieldPanel("search_description_en"),
     ]
+    translated = TranslationProxy()
 
     class Meta:
         abstract = True

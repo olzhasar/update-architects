@@ -10,7 +10,7 @@
         <div class="row">
 
             <div class="col-md-7">
-                <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">{% block breadcrumb_title %}{{ page.title }}{% endblock %}</h1>
+                <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">{% block breadcrumb_title %}{{ page.translated.title }}{% endblock %}</h1>
                 {% if page.translated.subtitle %}
                 <div class="hs-line-4 font-alt {% if not page.cover_image %}black{% endif %}">
                     {{ page.translated.subtitle }}
@@ -25,7 +25,7 @@
                         <a href={% pageurl parent %}>{{ parent.translated.title }}</a>&nbsp;/&nbsp;
                       {% endif %}
                     {% endfor %}
-                    <span>{{ page.title }}</span>
+                    <span>{{ page.translated.title }}</span>
                 </div>
 
             </div>
