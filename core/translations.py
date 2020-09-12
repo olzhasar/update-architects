@@ -2,20 +2,20 @@ from django.utils.translation import get_language
 
 
 class TranslationDescriptor:
-    default_prefix = "ru"
+    default_suffix = "ru"
 
     def __init__(self, instance, locale):
-        prefix_mapping = {"ru-ru": "ru", "en-us": "en"}
+        suffix_mapping = {"ru-ru": "ru", "en-us": "en"}
         self.instance = instance
-        self.prefix = prefix_mapping.get(locale, "ru")
+        self.suffix = suffix_mapping.get(locale, "ru")
 
     def __getattr__(self, field_name):
-        translated_field = f"{self.prefix}_{field_name}"
+        translated_field = f"{field_name}_{self.suffix}"
         if hasattr(self.instance, translated_field):
             val = getattr(self.instance, translated_field)
             if val:
                 return val
-            untranslated_field = f"{self.default_prefix}_{field_name}"
+            untranslated_field = f"{field_name}_{self.default_suffix}"
             if hasattr(self.instance, untranslated_field):
                 return getattr(self.instance, untranslated_field)
         return getattr(self.instance, field_name)

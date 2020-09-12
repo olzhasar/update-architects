@@ -10,11 +10,11 @@ def mock_get_language(mocker):
 
 
 class A:
-    ru_field = 5
-    en_field = 8
+    field_ru = 5
+    field_en = 8
 
-    ru_field_2 = 10
-    en_field_2 = ""
+    field_2_ru = 10
+    field_2_en = ""
 
     translated = TranslationProxy()
 
