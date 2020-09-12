@@ -1,0 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-12 13:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: core/mixins.py:15
+msgid "title en"
+msgstr ""
+
+#: core/mixins.py:17
+msgid "The page title as you'd like it to be seen by the public"
+msgstr ""
+
+#: core/mixins.py:22
+msgid "page title en"
+msgstr ""
+
+#: core/mixins.py:26
+msgid ""
+"Optional. 'Search Engine Friendly' title. This will appear at the top of the "
+"browser window."
+msgstr ""
+
+#: core/mixins.py:30
+msgid "search description en"
+msgstr ""
+
+#: home/image_formats.py:13
+msgid "Full width"
+msgstr ""
+
+#: home/image_formats.py:16
+msgid "Left-aligned"
+msgstr ""
+
+#: home/image_formats.py:19
+msgid "Right-aligned"
+msgstr ""
+
+#: templates/home/contacts.html:20
+msgid "Phone"
+msgstr "Телефон"
+
+#: templates/home/contacts.html:44
+msgid "Address"
+msgstr "Адрес"
+
+#: templates/home/contacts.html:59
+msgid "Leave us a message"
+msgstr "Написать нам"
+
+#: templates/home/contacts.html:66
+msgid "Your name"
+msgstr "Ваше имя"
+
+#: templates/home/contacts.html:78
+msgid "Your email"
+msgstr "Ваш email"
+
+#: templates/home/contacts.html:89
+msgid "Your message"
+msgstr "Сообщение"
+
+#: templates/home/contacts.html:98
+msgid "Send"
+msgstr "Отправить"
+
+#: templates/home/job_postings.html:21
+msgid "Current jobs available"
+msgstr "Текущие вакансии"
+
+#: templates/home/job_postings.html:33
+msgid "There are no active job postings"
+msgstr "На данный момент у нас нет открытых вакансий"
+
+#: templates/home/service_page.html:35
+msgid "All services"
+msgstr "Все услуги"
+
+#: templates/home/services_page.html:19
+msgid "Almaty"
+msgstr "Алматы"
+
+#: templates/home/services_page.html:22
+msgid "Astana"
+msgstr "Астана"
+
+#: templates/home/services_page.html:25
+msgid "Kazakhstan"
+msgstr "Казахстан"
+
+#: templates/home/services_page.html:47
+msgid "Details"
+msgstr "Подробнее"
+
+#: templates/portfolio/project.html:25
+msgid "Year"
+msgstr "Год"
+
+#: templates/portfolio/project.html:31
+msgid "Location"
+msgstr "Расположение"
+
+#: templates/portfolio/project.html:37
+msgid "Area size"
+msgstr "Площадь"
+
+#: templates/portfolio/project.html:43
+msgid "Authors"
+msgstr "Авторы"
+
+#: templates/portfolio/project.html:49
+msgid "Status"
+msgstr "Статус реализации"
+
+#: templates/puput/blog_page.html:15
+msgid "Entries for"
+msgstr ""

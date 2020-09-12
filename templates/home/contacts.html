@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags static %}
+{% load i18n %}
 
 {% block content %}
 <main>
@@ -13,10 +14,10 @@
 	  {% for social_link in social_links %}
 	  <meta itemprop="sameAs" content="{{ social_link.url }}">
 	  {% endfor %}
-	  <h1 class="title is-4">Контактная информация</h1>
+	  <h1 class="title is-4">{% "Contact info" %}</h1>
 	  <div class="columns is-multiline contacts-columns">
 	    <div class="column is-3">
-	      <p class="title">Телефон:</p>
+	      <p class="title">{% trans "Phone" %}:</p>
 	    </div>
 	    <div class="column is-9">
 	      <a href="tel:{{ page.phone_number }}">
@@ -40,7 +41,7 @@
 	      </a>
 	    </div>
 	    <div class="column is-3">
-	      <p class="title">Адрес:</p>
+	      <p class="title">{% trans "Address" %}:</p>
 	    </div>
 	    <div class="column is-9">
 	      <p class="subtitle">
@@ -55,14 +56,14 @@
 	  </div>
 	</article>
 	<aside class="column is-4 is-offset-1">
-	  <h2 class="title is-4">Написать нам:</h2>
+	  <h2 class="title is-4">{% trans "Leave us a message" %}:</h2>
 	  <form id="contact_form" target="{% pageurl page %}" method="POST">
 	    {% csrf_token %}
 	    <div class="field is-horizontal">
 	      <div class="field-body">
 		<div class="field">
 		  <p class="control is-expanded has-icons-left">
-		    <input name="name" required id="id_name" class="input" type="text" placeholder="Ваше Имя">
+		    <input name="name" required id="id_name" class="input" type="text" placeholder="{% trans "Your name" %}">
 		    <span class="icon is-small is-left">
 		      <i class="fas fa-user"></i>
 		    </span>
@@ -74,7 +75,7 @@
 	      <div class="field-body">
 		<div class="field">
 		  <p class="control is-expanded has-icons-left has-icons-right">
-		    <input name="email" required id="id_email" class="input" type="email" placeholder="Ваш Email">
+		    <input name="email" required id="id_email" class="input" type="email" placeholder="{% trans "Your email" %}">
 		    <span class="icon is-small is-left">
 		      <i class="fas fa-envelope"></i>
 		    </span>
@@ -85,7 +86,7 @@
 	      <div class="field-body">
 		<div class="field">
 		  <div class="control">
-		    <textarea name="message" required id="id_message" class="textarea" placeholder="Ваше сообщение"></textarea>
+		    <textarea name="message" required id="id_message" class="textarea" placeholder="{% trans "Your message" %}"></textarea>
 		  </div>
 		</div>
 	      </div>
@@ -94,7 +95,7 @@
 	      <div class="field-body">
 		<div class="field">
 		  <div class="control">
-		    <button type="submit" id="submit_btn" class="button is-medium is-dark is-fullwidth">Отправить</button>
+		    <button type="submit" id="submit_btn" class="button is-medium is-dark is-fullwidth">{% trans "Send" %}</button>
 		  </div>
 		</div>
 	      </div>

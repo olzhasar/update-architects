@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags %}
+{% load i18n %}
 
 {% block content %}
 
@@ -15,13 +16,13 @@
 	      <meta itemprop="name" content="{{ self.get_site.site_name }}">
 	    </div>
 	    <div itemprop="areaServed" itemscope itemtype="https://schema.org/City">
-	      <meta itemprop="name" content="Алматы">
+	      <meta itemprop="name" content="{% trans "Almaty" %}">
 	    </div>
 	    <div itemprop="areaServed" itemscope itemtype="https://schema.org/City">
-	      <meta itemprop="name" content="Астана">
+	      <meta itemprop="name" content="{% trans "Astana" %}">
 	    </div>
 	    <div itemprop="areaServed" itemscope itemtype="https://schema.org/Country">
-	      <meta itemprop="name" content="Казахстан">
+	      <meta itemprop="name" content="{% trans "Kazakhstan" %}">
 	    </div>
 	    <div class="content" itemprop="description">
 	      {{ page.translated.body|richtext }}
@@ -43,7 +44,7 @@
 		  </div>
 		  <footer class="card-footer">
 		    <a href="{% pageurl service %}" class="button is-light is-fullwidth">
-		      <span>Подробнее</span>
+		      <span>{% trans "Details" %}</span>
 		      <span class="icon"><i class="fas fa-arrow-right"></i></span>
 		    </a>
 		  </footer>

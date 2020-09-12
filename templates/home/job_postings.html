@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags %}
+{% load i18n %}
 
 {% block content %}
 <main>
@@ -18,7 +19,7 @@
     <div class="container">
       <div class="columns">
 	<div class="column is-6 is-offset-3">
-	  <h1 class="title has-text-centered is-size-6">Текущие вакансии:</h1>
+	  <h1 class="title has-text-centered is-size-6">{% trans "Current jobs available" %}:</h1>
 	  <hr>
 	  {% with page.postings.all as postings %}
 	  {% if postings %}
@@ -30,7 +31,7 @@
 	  <hr>
 	  {% endfor %}
 	  {% else %}
-	  <p class="subtitle">На данный момент у нас нет открытых вакансий</p>
+	  <p class="subtitle">{% trans "There are no active job postings" %}</p>
 	  {% endif %}
 	  {% endwith %}
 	</div>

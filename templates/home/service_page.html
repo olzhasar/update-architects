@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags %}
+{% load i18n %}
 
 {% block content %}
 <main>
@@ -31,7 +32,7 @@
 	  <div class="section has-text-centered">
 	    <a class="button is-dark is-outlined" href="{% slugurl 'services' %}">
 	      <span class="icon"><i class="fas fa-arrow-left"></i></span>
-	      <span>Все услуги</span>
+	      <span>{% trans "All services" %}</span>
 	    </a>
 	  </div>
 	</div>

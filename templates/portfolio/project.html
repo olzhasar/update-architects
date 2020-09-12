@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags wagtailimages_tags %}
+{% load i18n %}
 
 {% block content %}
 <main>
@@ -21,31 +22,31 @@
 	    <table class="table">
 	      {% if self.year %}
 	      <tr>
-		<th>Год:</th>
+		<th>{% trans "Year" %}:</th>
 		<td itemprop="copyrightYear">{{ self.year }}</td>
 	      </tr>
 	      {% endif %}
 	      {% if self.translated.location %}
 	      <tr>
-		<th>Расположение:</th>
+		<th>{% trans "Location" %}:</th>
 		<td itemprop="locationCreated">{{ self.translated.location }}</td>
 	      </tr>
 	      {% endif %}
 	      {% if self.area_size %}
 	      <tr>
-		<th>Общая площадь:</th>
+		<th>{% trans "Area size" %}:</th>
 		<td>{{ self.area_size }}</td>
 	      </tr>
 	      {% endif %}
 	      {% if self.translated.authors %}
 	      <tr>
-		<th>Авторы:</th>
+		<th>{% trans "Authors" %}:</th>
 		<td>{{ self.translated.authors }}</td>
 	      </tr>
 	      {% endif %}
 	      {% if self.translated.status %}
 	      <tr>
-		<th>Статус реализации:</th>
+		<th>{% trans "Status" %}:</th>
 		<td>{{ self.translated.status }}</td>
 	      </tr>
 	      {% endif %}
