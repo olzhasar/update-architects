@@ -77,8 +77,65 @@ class HomePage(TranslatedPageMixin, Page):
         ]
     )
 
+    body_en = StreamField(
+        [
+            (
+                "main_banner",
+                blocks.StructBlock(
+                    [
+                        ("image", ImageChooserBlock()),
+                        ("title", blocks.CharBlock()),
+                        ("subtitle", blocks.CharBlock(required=False)),
+                    ],
+                    template="home/blocks/main_banner.html",
+                ),
+            ),
+            (
+                "about_block",
+                blocks.StructBlock(
+                    [
+                        ("title", blocks.CharBlock()),
+                        ("header_text", blocks.CharBlock()),
+                        ("content", blocks.RichTextBlock()),
+                    ],
+                    template="home/blocks/about_block.html",
+                ),
+            ),
+            (
+                "portfolio_block",
+                blocks.StructBlock(
+                    [
+                        ("title", blocks.CharBlock()),
+                        ("subtitle", blocks.CharBlock()),
+                        (
+                            "projects",
+                            blocks.ListBlock(
+                                blocks.PageChooserBlock(
+                                    target_model="portfolio.project"
+                                )
+                            ),
+                        ),
+                        ("portfolio_link", blocks.URLBlock(required=False)),
+                    ],
+                    template="home/blocks/portfolio_block.html",
+                ),
+            ),
+            (
+                "customers",
+                blocks.ListBlock(
+                    blocks.StructBlock(
+                        [("name", blocks.CharBlock()), ("logo", ImageChooserBlock()),],
+                        icon="group",
+                    ),
+                    template="home/blocks/customers.html",
+                ),
+            ),
+        ]
+    )
+
     content_panels = TranslatedPageMixin.content_panels + [
         StreamFieldPanel("body_ru"),
+        StreamFieldPanel("body_en"),
     ]
 
     def get_context(self, request):
@@ -101,11 +158,15 @@ class RegularPage(TranslatedPageMixin, Page):
     is_abstract = True
 
     subtitle_ru = models.CharField(max_length=255, blank=True, null=True)
+    subtitle_en = models.CharField(max_length=255, blank=True, null=True)
     body_ru = RichTextField(null=True, blank=True)
+    body_en = RichTextField(null=True, blank=True)
 
     content_panels = TranslatedPageMixin.content_panels + [
         FieldPanel("subtitle_ru"),
+        FieldPanel("subtitle_en"),
         FieldPanel("body_ru", classname="full"),
+        FieldPanel("body_en", classname="full"),
     ]
 
     class Meta:
@@ -138,10 +199,12 @@ class ServicesPage(RegularPage):
 
 class ServicePage(RegularPage):
     short_description_ru = models.TextField(blank=True, null=True)
+    short_description_en = models.TextField(blank=True, null=True)
     wiki_url = models.URLField(blank=True, null=True)
 
     promote_panels = RegularPage.promote_panels + [
         FieldPanel("short_description_ru"),
+        FieldPanel("short_description_en"),
         FieldPanel("wiki_url"),
     ]
 
@@ -160,7 +223,9 @@ class AboutPage(RegularPage):
 class TeamMember(TranslatedMixin, Orderable):
     page = ParentalKey(AboutPage, on_delete=models.CASCADE, related_name="members")
     name_ru = models.CharField(max_length=255)
+    name_en = models.CharField(max_length=255)
     job_title_ru = models.CharField(max_length=255)
+    job_title_en = models.CharField(max_length=255)
     body = None
     avatar = models.ForeignKey(
         "wagtailimages.Image",
@@ -172,7 +237,9 @@ class TeamMember(TranslatedMixin, Orderable):
 
     panels = [
         FieldPanel("name_ru"),
+        FieldPanel("name_en"),
         FieldPanel("job_title_ru"),
+        FieldPanel("job_title_en"),
         ImageChooserPanel("avatar"),
     ]
 
@@ -188,11 +255,15 @@ class JobPostings(RegularPage):
 class JobPosting(TranslatedMixin, Orderable):
     page = ParentalKey(JobPostings, on_delete=models.CASCADE, related_name="postings")
     job_title_ru = models.CharField(max_length=255)
+    job_title_en = models.CharField(max_length=255)
     description_ru = RichTextField()
+    description_en = RichTextField()
 
     panels = [
         FieldPanel("job_title_ru"),
+        FieldPanel("job_title_en"),
         FieldPanel("description_ru", classname="full"),
+        FieldPanel("description_en", classname="full"),
     ]
 
 
@@ -203,18 +274,21 @@ class FormField(AbstractFormField):
 class Contacts(RegularPage, AbstractEmailForm):
     phone_number = models.CharField(max_length=100, blank=True, null=True)
     address_ru = models.CharField(max_length=255, blank=True, null=True)
+    address_en = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
 
     latitude = models.FloatField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
 
     form_success_text_ru = RichTextField(blank=True, null=True)
+    form_success_text_en = RichTextField(blank=True, null=True)
 
     content_panels = RegularPage.content_panels + [
         MultiFieldPanel(
             [
                 FieldPanel("phone_number"),
                 FieldPanel("address_ru"),
+                FieldPanel("address_en"),
                 FieldPanel("email"),
             ],
             heading="Contact Information",
@@ -225,6 +299,7 @@ class Contacts(RegularPage, AbstractEmailForm):
         ),
         InlinePanel("form_fields", label="Form fields"),
         FieldPanel("form_success_text_ru"),
+        FieldPanel("form_success_text_en"),
         MultiFieldPanel(
             [
                 FieldRowPanel(
@@ -251,11 +326,13 @@ class Contacts(RegularPage, AbstractEmailForm):
 @register_snippet
 class SocialLink(TranslatedMixin, models.Model):
     title_ru = models.CharField(max_length=128)
+    title_en = models.CharField(max_length=128)
     icon = models.CharField(max_length=256)
     url = models.URLField()
 
     panels = [
         FieldPanel("title_ru"),
+        FieldPanel("title_en"),
         FieldPanel("icon"),
         FieldPanel("url"),
     ]

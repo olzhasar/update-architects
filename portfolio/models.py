@@ -5,7 +5,7 @@ from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-from core.mixins import TranslatedMixin
+from core.mixins import TranslatedMixin, TranslatedPageMixin
 from home.models import RegularPage
 
 
@@ -29,49 +29,63 @@ class ProjectCategory(TranslatedMixin, Orderable):
         PortfolioIndex, on_delete=models.CASCADE, related_name="categories"
     )
     name_ru = models.CharField(max_length=255, unique=True)
+    name_en = models.CharField(max_length=255)
     code = models.CharField(max_length=100, unique=True)
 
     panels = [
         FieldPanel("name_ru"),
+        FieldPanel("name_en"),
         FieldPanel("code"),
     ]
 
     def __str__(self):
-        return self.name
+        return self.name_ru
 
 
-class Project(Page):
+class Project(TranslatedPageMixin, Page):
     order = models.SmallIntegerField(default=0)
     subtitle_ru = models.CharField(max_length=255, blank=True, null=True)
+    subtitle_en = models.CharField(max_length=255, blank=True, null=True)
     categories = ParentalManyToManyField(ProjectCategory, blank=True)
     year = models.IntegerField(blank=True, null=True)
     location_ru = models.CharField(max_length=255, blank=True, null=True)
+    location_en = models.CharField(max_length=255, blank=True, null=True)
     area_size_ru = models.CharField(max_length=255, blank=True, null=True)
+    area_size_en = models.CharField(max_length=255, blank=True, null=True)
     authors_ru = models.CharField(max_length=255, blank=True, null=True)
+    authors_en = models.CharField(max_length=255, blank=True, null=True)
     status_ru = models.CharField(max_length=255, blank=True, null=True)
+    status_en = models.CharField(max_length=255, blank=True, null=True)
 
     description_ru = RichTextField(blank=True, null=True)
+    description_en = RichTextField(blank=True, null=True)
 
     body = None
 
-    content_panels = Page.content_panels + [
+    content_panels = TranslatedPageMixin.content_panels + [
         FieldPanel("subtitle_ru"),
+        FieldPanel("subtitle_en"),
         FieldPanel("categories"),
         MultiFieldPanel(
             [
                 FieldPanel("year"),
                 FieldPanel("location_ru"),
+                FieldPanel("location_en"),
                 FieldPanel("area_size_ru"),
+                FieldPanel("area_size_en"),
                 FieldPanel("authors_ru"),
+                FieldPanel("authors_en"),
                 FieldPanel("status_ru"),
+                FieldPanel("status_en"),
             ],
             heading="Project details",
         ),
         FieldPanel("description_ru"),
+        FieldPanel("description_en"),
         InlinePanel("images", label="Project images"),
     ]
 
-    promote_panels = Page.promote_panels + [
+    promote_panels = TranslatedPageMixin.promote_panels + [
         FieldPanel("order"),
     ]
 
