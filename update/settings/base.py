@@ -69,10 +69,6 @@ DATABASES = {
     }
 }
 
-CACHES = {
-    "default": {"BACKEND": "django_redis.cache.RedisCache", "LOCATION": "redis:6379"}
-}
-
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",

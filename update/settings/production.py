@@ -23,6 +23,10 @@ WAGTAILIMAGES_JPEG_QUALITY = 80
 
 WAGTAIL_ENABLE_UPDATE_CHECK = False
 
+CACHES = {
+    "default": {"BACKEND": "django_redis.cache.RedisCache", "LOCATION": "redis:6379"}
+}
+
 EMAIL_HOST = "smtp.yandex.ru"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
