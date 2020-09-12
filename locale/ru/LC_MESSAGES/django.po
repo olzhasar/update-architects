@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-12 13:54+0000\n"
+"POT-Creation-Date: 2020-09-12 14:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,10 @@ msgstr ""
 msgid "Right-aligned"
 msgstr ""
 
+#: templates/home/contacts.html:17
+msgid "Contact info"
+msgstr "Контактная информация"
+
 #: templates/home/contacts.html:20
 msgid "Phone"
 msgstr "Телефон"
@@ -82,11 +86,11 @@ msgstr "Сообщение"
 msgid "Send"
 msgstr "Отправить"
 
-#: templates/home/job_postings.html:21
+#: templates/home/job_postings.html:22
 msgid "Current jobs available"
 msgstr "Текущие вакансии"
 
-#: templates/home/job_postings.html:33
+#: templates/home/job_postings.html:34
 msgid "There are no active job postings"
 msgstr "На данный момент у нас нет открытых вакансий"
 
