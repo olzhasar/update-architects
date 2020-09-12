@@ -5,9 +5,8 @@ class TranslationDescriptor:
     default_suffix = "ru"
 
     def __init__(self, instance, locale):
-        suffix_mapping = {"ru-ru": "ru", "en-us": "en"}
         self.instance = instance
-        self.suffix = suffix_mapping.get(locale, "ru")
+        self.suffix = locale or self.default_suffix
 
     def __getattr__(self, field_name):
         translated_field = f"{field_name}_{self.suffix}"
