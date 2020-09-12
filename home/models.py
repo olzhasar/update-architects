@@ -19,7 +19,7 @@ from wagtail.snippets.models import register_snippet
 
 class HomePage(Page):
 
-    body = StreamField(
+    body_ru = StreamField(
         [
             (
                 "main_banner",
@@ -66,10 +66,7 @@ class HomePage(Page):
                 "customers",
                 blocks.ListBlock(
                     blocks.StructBlock(
-                        [
-                            ("name", blocks.CharBlock()),
-                            ("logo", ImageChooserBlock()),
-                        ],
+                        [("name", blocks.CharBlock()), ("logo", ImageChooserBlock()),],
                         icon="group",
                     ),
                     template="home/blocks/customers.html",
@@ -79,7 +76,7 @@ class HomePage(Page):
     )
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel("body"),
+        StreamFieldPanel("body_ru"),
     ]
 
     def get_context(self, request):
@@ -101,12 +98,12 @@ class HomePage(Page):
 class RegularPage(Page):
     is_abstract = True
 
-    subtitle = models.CharField(max_length=255, blank=True, null=True)
-    body = RichTextField(null=True, blank=True)
+    subtitle_ru = models.CharField(max_length=255, blank=True, null=True)
+    body_ru = RichTextField(null=True, blank=True)
 
     content_panels = Page.content_panels + [
-        FieldPanel("subtitle"),
-        FieldPanel("body", classname="full"),
+        FieldPanel("subtitle_ru"),
+        FieldPanel("body_ru", classname="full"),
     ]
 
     class Meta:
@@ -138,11 +135,11 @@ class ServicesPage(RegularPage):
 
 
 class ServicePage(RegularPage):
-    short_description = models.TextField(blank=True, null=True)
+    short_description_ru = models.TextField(blank=True, null=True)
     wiki_url = models.URLField(blank=True, null=True)
 
     promote_panels = RegularPage.promote_panels + [
-        FieldPanel("short_description"),
+        FieldPanel("short_description_ru"),
         FieldPanel("wiki_url"),
     ]
 
@@ -160,8 +157,8 @@ class AboutPage(RegularPage):
 
 class TeamMember(Orderable):
     page = ParentalKey(AboutPage, on_delete=models.CASCADE, related_name="members")
-    name = models.CharField(max_length=255)
-    job_title = models.CharField(max_length=255)
+    name_ru = models.CharField(max_length=255)
+    job_title_ru = models.CharField(max_length=255)
     body = None
     avatar = models.ForeignKey(
         "wagtailimages.Image",
@@ -172,8 +169,8 @@ class TeamMember(Orderable):
     )
 
     panels = [
-        FieldPanel("name"),
-        FieldPanel("job_title"),
+        FieldPanel("name_ru"),
+        FieldPanel("job_title_ru"),
         ImageChooserPanel("avatar"),
     ]
 
@@ -188,10 +185,13 @@ class JobPostings(RegularPage):
 
 class JobPosting(Orderable):
     page = ParentalKey(JobPostings, on_delete=models.CASCADE, related_name="postings")
-    job_title = models.CharField(max_length=255)
-    description = RichTextField()
+    job_title_ru = models.CharField(max_length=255)
+    description_ru = RichTextField()
 
-    panels = [FieldPanel("job_title"), FieldPanel("description", classname="full")]
+    panels = [
+        FieldPanel("job_title_ru"),
+        FieldPanel("description_ru", classname="full"),
+    ]
 
 
 class FormField(AbstractFormField):
@@ -200,32 +200,29 @@ class FormField(AbstractFormField):
 
 class Contacts(RegularPage, AbstractEmailForm):
     phone_number = models.CharField(max_length=100, blank=True, null=True)
-    address = models.CharField(max_length=255, blank=True, null=True)
+    address_ru = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
 
     latitude = models.FloatField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
 
-    form_success_text = RichTextField(blank=True, null=True)
+    form_success_text_ru = RichTextField(blank=True, null=True)
 
     content_panels = RegularPage.content_panels + [
         MultiFieldPanel(
             [
                 FieldPanel("phone_number"),
-                FieldPanel("address"),
+                FieldPanel("address_ru"),
                 FieldPanel("email"),
             ],
             heading="Contact Information",
         ),
         MultiFieldPanel(
-            [
-                FieldPanel("latitude"),
-                FieldPanel("longitude"),
-            ],
+            [FieldPanel("latitude"), FieldPanel("longitude"),],
             heading="Google Maps location",
         ),
         InlinePanel("form_fields", label="Form fields"),
-        FieldPanel("form_success_text"),
+        FieldPanel("form_success_text_ru"),
         MultiFieldPanel(
             [
                 FieldRowPanel(
@@ -251,15 +248,15 @@ class Contacts(RegularPage, AbstractEmailForm):
 
 @register_snippet
 class SocialLink(models.Model):
-    title = models.CharField(max_length=128)
+    title_ru = models.CharField(max_length=128)
     icon = models.CharField(max_length=256)
     url = models.URLField()
 
     panels = [
-        FieldPanel("title"),
+        FieldPanel("title_ru"),
         FieldPanel("icon"),
         FieldPanel("url"),
     ]
 
     def __str__(self):
-        return self.title
+        return self.title_ru

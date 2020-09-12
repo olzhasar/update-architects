@@ -27,11 +27,11 @@ class ProjectCategory(Orderable):
     page = ParentalKey(
         PortfolioIndex, on_delete=models.CASCADE, related_name="categories"
     )
-    name = models.CharField(max_length=255, unique=True)
+    name_ru = models.CharField(max_length=255, unique=True)
     code = models.CharField(max_length=100, unique=True)
 
     panels = [
-        FieldPanel("name"),
+        FieldPanel("name_ru"),
         FieldPanel("code"),
     ]
 
@@ -41,32 +41,32 @@ class ProjectCategory(Orderable):
 
 class Project(Page):
     order = models.SmallIntegerField(default=0)
-    subtitle = models.CharField(max_length=255, blank=True, null=True)
+    subtitle_ru = models.CharField(max_length=255, blank=True, null=True)
     categories = ParentalManyToManyField(ProjectCategory, blank=True)
     year = models.IntegerField(blank=True, null=True)
-    location = models.CharField(max_length=255, blank=True, null=True)
-    area_size = models.CharField(max_length=255, blank=True, null=True)
-    authors = models.CharField(max_length=255, blank=True, null=True)
-    status = models.CharField(max_length=255, blank=True, null=True)
+    location_ru = models.CharField(max_length=255, blank=True, null=True)
+    area_size_ru = models.CharField(max_length=255, blank=True, null=True)
+    authors_ru = models.CharField(max_length=255, blank=True, null=True)
+    status_ru = models.CharField(max_length=255, blank=True, null=True)
 
-    description = RichTextField(blank=True, null=True)
+    description_ru = RichTextField(blank=True, null=True)
 
     body = None
 
     content_panels = Page.content_panels + [
-        FieldPanel("subtitle"),
+        FieldPanel("subtitle_ru"),
         FieldPanel("categories"),
         MultiFieldPanel(
             [
                 FieldPanel("year"),
-                FieldPanel("location"),
-                FieldPanel("area_size"),
-                FieldPanel("authors"),
-                FieldPanel("status"),
+                FieldPanel("location_ru"),
+                FieldPanel("area_size_ru"),
+                FieldPanel("authors_ru"),
+                FieldPanel("status_ru"),
             ],
             heading="Project details",
         ),
-        FieldPanel("description"),
+        FieldPanel("description_ru"),
         InlinePanel("images", label="Project images"),
     ]
 
