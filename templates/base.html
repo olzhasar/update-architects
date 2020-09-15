@@ -1,4 +1,6 @@
 {% load static wagtailuserbar menu_tags compress home_tags %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -62,6 +64,13 @@
 	  </div>
 	  <div class="level-right">
 	    {% social_links %}
+	    <form action="{% url 'set_language' %}" method="POST">
+	      {% csrf_token %}
+	      <input type="hidden" id="language" name="language" value="{% if LANGUAGE_CODE == 'ru' %}en{% else %}ru{% endif %}">
+	      <button class="button is-dark" type="submit">
+		{% if LANGUAGE_CODE == 'ru' %}EN{% else %}RU{% endif %}
+	      </button>
+	    </form>
 	  </div>
 	</div>
       </div>
