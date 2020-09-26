@@ -3,7 +3,7 @@ version: '3'
 services:
   web:
     build: .
-    command: uwsgi --ini /app/update/uwsgi.ini
+    command: python manage.py migrate --noinput && uwsgi --ini /app/update/uwsgi.ini
     volumes:
       - /tmp/uwsgi/:/tmp/uwsgi
       - /var/www/static:/static
