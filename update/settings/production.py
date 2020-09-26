@@ -27,6 +27,9 @@ CACHES = {
     "default": {"BACKEND": "django_redis.cache.RedisCache", "LOCATION": "redis:6379"}
 }
 
+STATIC_ROOT = "/static"
+MEDIA_ROOT = "/media"
+
 EMAIL_HOST = "smtp.yandex.ru"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
