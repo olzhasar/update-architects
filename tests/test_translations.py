@@ -22,7 +22,7 @@ class A:
 
 
 def test_descriptor(mock_get_language):
-    mock_get_language.return_value = "en-us"
+    mock_get_language.return_value = "en"
 
     a = A()
     assert a.translated.field == 8
