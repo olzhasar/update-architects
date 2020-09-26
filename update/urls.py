@@ -23,11 +23,16 @@ urlpatterns = [
     ),
 ]
 
-urlpatterns += i18n_patterns(
+multilingual_patterns = [
     url(r"^search/$", search_views.search, name="search"),
     url(r"^blog/", include("puput.urls")),
     url(r"", include(wagtail_urls)),
-)
+]
+
+if settings.USE_I18N:
+    urlpatterns += i18n_patterns(*multilingual_patterns)
+else:
+    urlpatterns += multilingual_patterns
 
 
 if settings.DEBUG:
