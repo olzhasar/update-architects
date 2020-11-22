@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunSQL(
-            "ALTER TABLE wagtailimages_image DROP COLUMN file_hash;"
-            "ALTER TABLE wagtaildocs_document DROP COLUMN file_hash;"
+            "ALTER TABLE IF EXISTS wagtailimages_image DROP COLUMN IF EXISTS file_hash;"
+            "ALTER TABLE IF EXISTS wagtaildocs_document DROP COLUMN IF EXISTS file_hash;"
         )
     ]
