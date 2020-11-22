@@ -13,6 +13,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "up2date")
 
 INSTALLED_APPS = [
     "home",
+    "menu",
     "portfolio",
     "search",
     "wagtail.contrib.forms",
@@ -144,6 +145,8 @@ MEDIA_ROOT = os.getenv("MEDIA_ROOT", os.path.join(BASE_DIR, "media"))
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "update"
+
+WAGTAILMENUS_MAIN_MENU_ITEMS_RELATED_NAME = "custom_menu_items"
 
 PUPUT_AS_PLUGIN = True
 

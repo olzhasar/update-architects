@@ -2,7 +2,7 @@
 {% if menu_items %}
 <div class="navbar-dropdown">
   {% for item in menu_items %}
-  <a class="navbar-item" href="{{ item.href }}">{{ item.text|safe }}</a>
+  <a class="navbar-item" href="{{ item.href }}">{{ item.translated.link_text|safe }}</a>
   {% endfor %}
 </div>
 {% endif %}

@@ -1,4 +1,4 @@
 {% load menu_tags %}
 {% for item in menu_items %}
-<a class="navbar-item" href="{{ item.href }}">{{ item.text|safe }}</a>
+<a class="navbar-item" href="{{ item.href }}">{{ item.translated.link_text|safe }}</a>
 {% endfor %}
