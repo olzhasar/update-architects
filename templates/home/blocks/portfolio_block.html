@@ -19,9 +19,9 @@
     <div class="hero-body">
       <div class="container has-text-centered">
 	<p class="title">
-	  Хотите увидеть больше работ?
+	  {{ self.portfolio_link_title }}
 	</p>
-	<a class="button is-medium" href="{{ self.portfolio_link }}">Перейти в портфолио</a>
+	<a class="button is-medium" href="{{ self.portfolio_link }}">{{ self.portfolio_link_text }}</a>
       </div>
     </div>
   </div>
